@@ -22,11 +22,16 @@ import { IoSparkles } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogin, MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
+import userLogInStore from '../../../stores/AuthenticationStore/userLogInStore';
+
 export default function UserMenuModel() {
+
+  const { isLoggedIn, setIsLoggedIn } = userLogInStore();
+
   return (
     <Menu>
       {/* IF USER IS LOGGED IN THEN SHOW MENU BUTTON */}
-      <MenuButton
+      {isLoggedIn &&<MenuButton
         cursor='pointer'
         padding='0px 6px'
         borderRadius={4}
@@ -70,7 +75,7 @@ export default function UserMenuModel() {
             </Flex>
           </Flex>
         
-      </MenuButton>
+      </MenuButton>}
       {/* MenuList -> Profile, Darkmode, Logout */}
       <MenuList border={"none" } bg={"white"}>
         <MenuItem

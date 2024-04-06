@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 // import { theme } from "./chakra/theme";
+import { ToastContainer} from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +13,7 @@ root.render(
   <BrowserRouter>
     <ChakraProvider >
         <App />
+        <ToastContainer/>
     </ChakraProvider>
   </BrowserRouter>
 );

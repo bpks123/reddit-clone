@@ -3,7 +3,11 @@ import { Flex, Image } from '@chakra-ui/react'
 import  RightContent  from '../Navbar/RightContent/RightContent'
 import  Directory from '../Navbar/Directory/Directory'
 import SearchInput from './SearchInput'
+import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 export default function Navbar() {
+
+  const {isLoggedIn} = userLogInStore();
+  
   return (
     <Flex bg={'white'} height='44px' 
           padding={{base: '6px 0px', md: '6px 12px'}}
@@ -34,7 +38,8 @@ export default function Navbar() {
        </Flex>
        
        {/* HOME ICON AND DIRECTORY */}
-       {<Directory />}
+       {isLoggedIn && <Directory />}
+
        
        {/* NAVBAR -> SEARCHINPUT */}
        <SearchInput/>
