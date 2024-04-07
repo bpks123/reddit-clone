@@ -4,7 +4,7 @@ import { Flex } from '@chakra-ui/react'
 export default function AllPagesLayout({children}) {
   return (
     // border="1px solid black"
-    <Flex justify="center" p="16px 0px" >           
+    <Flex justify="center" p="16px 0px">           
 
         <Flex
          width="95%"

@@ -18,7 +18,11 @@ import { FaEdit, FaRegComment } from 'react-icons/fa';
 import { IoSearch } from "react-icons/io5";
 import { PiShieldCheckeredFill } from "react-icons/pi";
 import  Communities  from './Communities';
+import useMenuButtonTextStore from '../../../stores/NavigatorStore/useMenuButtonTextStore';
 export default function Directory() {
+
+  // const { menuButtonText, setMenuButtonText } = useMenuButtonTextStore();
+
 
   // this menuButtonText need to corrent
   let menuButtonText='Home'

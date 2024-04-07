@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Flex, Icon, Image, Stack, Text, chakra } from '@chakra-ui/react'
 import { IoArrowUpCircleOutline, IoArrowDownCircleOutline, IoArrowUpCircleSharp, IoArrowRedoOutline, IoBookmarkOutline } from 'react-icons/io5'
 import { BsChat } from 'react-icons/bs';
@@ -9,7 +9,7 @@ import useLogInModalStore from '../../stores/ModalStore/LogInModalStore'
 import { useNavigate } from 'react-router-dom';
 
 
-export default function PostItem({ post, increaseVote, decreaseVote, deletePost, editPost, handleComment }) {
+export default function PostItem({ post, increaseLike, decreaseLike, handleComment }) {
 
   const { isLoggedIn, setIsLoggedIn } = userLogInStore();
   const {setLogInModal}=useLogInModalStore()
@@ -38,11 +38,11 @@ export default function PostItem({ post, increaseVote, decreaseVote, deletePost,
       >
         <Icon
           as={IoArrowUpCircleOutline}
-          color="gray.400"
+          color={"gray.400"}
           fontSize={24}
           cursor="pointer"
           _hover={{ color: "brand.100" }}
-          //   onClick={() => increaseVote(post._id)}
+            onClick={() => increaseLike(post._id)}
         />
         {/* Total like count text */}
         <Text fontSize="9pt" fontWeight={600}>
@@ -55,7 +55,7 @@ export default function PostItem({ post, increaseVote, decreaseVote, deletePost,
           cursor="pointer"
           _hover={{ color: "brand.100" }}
           fontSize={24}
-          //   onClick={() => decreaseVote(post._id)}
+            onClick={() => decreaseLike(post._id)}
         />
       </Flex>
 
@@ -155,7 +155,7 @@ export default function PostItem({ post, increaseVote, decreaseVote, deletePost,
             borderRadius={4}
             _hover={{ bg:"gray.200" }}
             cursor="pointer"
-            // onClick={() => handleComment(post)}
+            onClick={() => handleComment(post)}
           >
             <Icon as={BsChat} mr={2} />
             <Text fontSize="9pt">{post.commentCount}</Text>
