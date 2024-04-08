@@ -6,13 +6,15 @@ import { FaReddit, FaRegEdit } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 import useLogInModalStore from '../../stores/ModalStore/LogInModalStore'
+import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import { useNavigate } from 'react-router-dom';
 
 
-export default function PostItem({ post, increaseLike, decreaseLike, handleComment }) {
+export default function PostItem({ post, increaseLike, decreaseLike, deletePost, editPost, handleComment }) {
 
   const { isLoggedIn, setIsLoggedIn } = userLogInStore();
   const {setLogInModal}=useLogInModalStore()
+  const { isDarkMode } = useThemeStore();
   const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'));
   const token = sessionStorage.getItem('userToken');
   const navigateTo = useNavigate();
@@ -185,7 +187,37 @@ export default function PostItem({ post, increaseLike, decreaseLike, handleComme
             <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Save</Text>
           </Flex>
 
+          {isLoggedIn && post.author._id === loggedInUserDetails._id && (
+            <Flex
+              align="center"
+              padding="8px 10px"
+              borderRadius={4}
+              _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
+              cursor="pointer"
+              onClick={() => editPost(post)}
+            >
+              <Icon as={FaRegEdit} mr={2} />
+              <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Edit</Text>
+            </Flex>
+          )}
           {/*Edit and Delete post for own channel is pending to done.. */}
+          {isLoggedIn && (
+            post.author._id===loggedInUserDetails._id || (post.channel && post.channel.owner === loggedInUserDetails._id)
+          )
+          && (
+            <Flex
+              align="center"
+              padding="8px 10px"
+              borderRadius={4}
+              _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
+              cursor="pointer"
+              onClick={() => deletePost(post._id)}
+            >
+              <Icon as={MdDeleteOutline} mr={2} />
+              <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Delete</Text>
+            </Flex>
+
+          )}
         </Flex>
       </Flex>
     </Flex>

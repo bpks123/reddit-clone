@@ -68,7 +68,44 @@ export default function NewPostForm() {
     function handleCreatePost(){
         console.log(textInputs.title)
         console.log(textInputs.content)
+        if(textInputs.title.length > 100){
+            setErrorMsg("Title characters can't be more than 100");
+            return;
+        }
+        setIsLoading(true);
+        const postData = new FormData();
+        postData.append('title', textInputs.title);
+        postData.append('content', textInputs.content);
+
+        createPost(postData)
+
     }
+    async function createPost(postData){
+      const token=(sessionStorage.getItem("userToken"))
+        
+      try{
+        let response=await fetch('https://academics.newtonschool.co/api/v1/reddit/post/',{
+              method:'POST',
+              headers:{
+                projectId:'7k1ct68pbbmr',
+                Authorization: `Bearer ${token}`,
+            },
+            body:postData
+            })
+            console.log(response)
+            let result=await response.json()
+            console.log("Post status: ",result)
+            setIsLoading(false)
+            navigateTo('/')
+             
+      }
+      catch(error){
+        alert(error)
+      }
+    }
+
+
+
     return (
     <Flex direction="column" bg={isDarkMode ? "#1a1a1b" : "white"} borderRadius={4} mt={2}>
 

@@ -71,6 +71,38 @@ export default function HomePagePosts({postData, setPostData, fetchPosts}) {
    }
   }
 
+  // Delete the post 
+  async function deletePost(PostId){
+    console.log("Delte comment: ",PostId)
+    try{
+      const token=(sessionStorage.getItem("userToken"))
+      // API used to delete the post
+      let response=await fetch(`https://academics.newtonschool.co/api/v1/reddit/post/${PostId}`,{
+            method:'DELETE',
+            headers:{
+              projectId:'7k1ct68pbbmr',
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+          }
+          })
+          console.log("Delete post info",response)
+          if(response.ok){
+            toast.success("Post successfully deleted!")
+          }
+          fetchPosts()
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
+  function editPost(postDetails){
+    console.log("Delete the post: ",postDetails)
+    navigateTo('/editPost', {state: {postDetails}});
+
+  }
+
+
   function handleComment(postDetails){
     navigateTo(`/comment/${postDetails._id}`, {state: {postDetails}});
  }
@@ -78,7 +110,8 @@ export default function HomePagePosts({postData, setPostData, fetchPosts}) {
     <>
       <Stack>
         {postData? postData.length>0 && postData.map((post,index)=>(
-            <PostItem key={index}  post={post} increaseLike={increaseLike} decreaseLike={decreaseLike} handleComment={handleComment}/>
+            <PostItem key={index}  post={post} increaseLike={increaseLike} 
+            decreaseLike={decreaseLike} editPost={editPost} deletePost={deletePost} handleComment={handleComment}/>
         )):
         <div>Loading...</div>
         }

@@ -167,12 +167,12 @@ const increaseLike=async(postId)=>{
     
   }
 
-  // Delete the post 
+  // Delete the post comment
   async function deleteComment(commentId){
     console.log("Delte comment: ",commentId)
     try{
       const token=(sessionStorage.getItem("userToken"))
-      // API used to delete the post
+      // API used to delete the post comment
       let response=await fetch(`https://academics.newtonschool.co/api/v1/reddit/comment/${commentId}`,{
             method:'DELETE',
             headers:{
