@@ -97,7 +97,6 @@ export default function HomePagePosts({postData, setPostData, fetchPosts}) {
   }
 
   function editPost(postDetails){
-    console.log("Delete the post: ",postDetails)
     navigateTo('/editPost', {state: {postDetails}});
 
   }
@@ -109,13 +108,18 @@ export default function HomePagePosts({postData, setPostData, fetchPosts}) {
   return (
     <>
       <Stack>
-        {postData? postData.length>0 && postData.map((post,index)=>(
-            <PostItem key={index}  post={post} increaseLike={increaseLike} 
-            decreaseLike={decreaseLike} editPost={editPost} deletePost={deletePost} handleComment={handleComment}/>
-        )):
-        <div>Loading...</div>
-        }
+        {postData.map((post, index) => (
+          <PostItem
+            key={index}
+            post={post}
+            increaseLike={increaseLike}
+            decreaseLike={decreaseLike}
+            editPost={editPost}
+            deletePost={deletePost}
+            handleComment={handleComment}
+          />
+        ))}
       </Stack>
     </>
-  )
+  );
 }

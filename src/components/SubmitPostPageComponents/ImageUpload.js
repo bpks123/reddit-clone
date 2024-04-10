@@ -1,36 +1,35 @@
 import React, { useRef, useState } from 'react'
 import { Button, Flex, Image, Stack } from '@chakra-ui/react'
 
-export default function ImageUpload() {
+export default function ImageUpload({selectedFile, onSelectImage, setSelectedTab, setSelectedFile, setUploadedImage, uploadBtnLoading, setUploadBtnLoading }) {
 
   const selectedFileRef = useRef(null);
 
   return (
     <Flex direction="column" justify="center" align="center" width="100%">
-            {false ? (
+            {selectedFile ? (
             // if image is selected show image
             <>
 
-             <Image 
-            //  src={selectedFile} 
+             <Image src={selectedFile} 
                 height="300px" maxWidth='100%'
                 objectFit="cover"    
             />
             <Stack  direction="row" mt={4}>
               <Button height="28px" 
-              // onClick={()=> setSelectedTab("Post")}
+              onClick={()=> setSelectedTab("Post")}
               >
                 Back to Post
               </Button>
               <Button
                variant="outline"
                height="28px"
-              //  onClick={()=> {
-              //   setSelectedFile(null);
-              //   setUploadedImage(null);
-              //   setUploadBtnLoading(false);
+               onClick={()=> {
+                setSelectedFile(null);
+                setUploadedImage(null);
+                setUploadBtnLoading(false);
 
-              //  }}
+               }}
               >
                 Remove
               </Button>
@@ -47,7 +46,7 @@ export default function ImageUpload() {
                 width="100%"
                 borderRadius={4}
             >
-
+    
                 <Button
                     variant="outline"
                     height="28px"
@@ -56,7 +55,7 @@ export default function ImageUpload() {
                         
 
                     }}
-                  //  isLoading={uploadBtnLoading}
+                   isLoading={uploadBtnLoading}
                 >
                     Upload
                 </Button>
@@ -65,7 +64,7 @@ export default function ImageUpload() {
                     ref={selectedFileRef}
                     type='file'
                     hidden
-                    // onChange={onSelectImage}
+                    onChange={onSelectImage}
                 />
 
             </Flex>

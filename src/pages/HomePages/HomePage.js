@@ -5,7 +5,7 @@ import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 import CreatePostLink from '../../components/CommunityPageComponent/CreatePostLink';
 import HomePagePosts from '../../components/HomePageComponents/HomePagePosts';
 import FilterBox from '../../components/HomePageComponents/FilterBox';
-
+import Loading from '../../components/HomePageComponents/loading.gif'
 export default function HomePage() {
 
   const { isLoggedIn } = userLogInStore();
@@ -75,8 +75,11 @@ async function fetchPosts(){
       <>
         <CreatePostLink/>
         {isLoggedIn && <FilterBox selectedFilterTab={selectedFilterTab} setSelectedFilterTab={setSelectedFilterTab}/>}
+        {postData.length>0? 
         <HomePagePosts postData={postData} setPostData={setPostData} fetchPosts={fetchPosts} />
-      </>
+          :<img width={'100px'} style={{marginLeft:'40%',marginTop:'20%'}} src={Loading}/>
+        }
+        </>
       {/* Right Hand side */}
       <>
         Right content

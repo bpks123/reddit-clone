@@ -77,6 +77,11 @@ export default function NewPostForm() {
         postData.append('title', textInputs.title);
         postData.append('content', textInputs.content);
 
+        if (uploadedImage) {  
+            postData.append('images', uploadedImage, uploadedImage.name);
+            // console.log("uploading image", uploadedImage);
+          }
+
         createPost(postData)
 
     }
@@ -94,7 +99,7 @@ export default function NewPostForm() {
             })
             console.log(response)
             let result=await response.json()
-            console.log("Post status: ",result)
+            console.log("Post Edited: ",result)
             setIsLoading(false)
             navigateTo('/')
              
@@ -103,6 +108,25 @@ export default function NewPostForm() {
         alert(error)
       }
     }
+
+    function onSelectImage(e) {
+
+        setUploadBtnLoading(true);
+        const reader = new FileReader();
+
+        if (e.target.files?.[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+            setUploadedImage(e.target.files[0]); // by uploadedImage state I will send in api 
+            console.log("selected images", e.target.files[0]);
+        }
+
+        reader.onload = (readerEvent) => {
+            if (readerEvent.target?.result) {
+                setSelectedFile(readerEvent.target.result); // by selectedFile state I will dispay on UI
+            }
+        };
+
+    };
 
 
 
@@ -127,13 +151,13 @@ export default function NewPostForm() {
                 />}
 
                 {selectedTab === "Images & Video" && <ImageUpload
-                    // selectedFile={selectedFile}
-                    // onSelectImage={onSelectImage}
-                    // setSelectedTab={setSelectedTab}
-                    // setSelectedFile={setSelectedFile}
-                    // setUploadedImage={setUploadedImage}
-                    // uploadBtnLoading={uploadBtnLoading}
-                    // setUploadBtnLoading={setUploadBtnLoading}
+                    selectedFile={selectedFile}
+                    onSelectImage={onSelectImage}
+                    setSelectedTab={setSelectedTab}
+                    setSelectedFile={setSelectedFile}
+                    setUploadedImage={setUploadedImage}
+                    uploadBtnLoading={uploadBtnLoading}
+                    setUploadBtnLoading={setUploadBtnLoading}
                 />}
             </Flex>
             
