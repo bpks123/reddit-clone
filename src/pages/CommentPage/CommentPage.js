@@ -25,10 +25,10 @@ export default function CommentPage() {
     const [btnLoading, setBtnLoading] = useState(false);
 
 
-    // useEffect(()=>{
-    //     setMenuButtonText('Post');
-    //     sessionStorage.setItem('menuButtonText', 'Post');
-    //   }, [])    
+    useEffect(()=>{
+        setMenuButtonText('Post');
+        sessionStorage.setItem('menuButtonText', 'Post');
+      }, [])    
 
     // Fetching all posts and fileter with current post ID
     const fetchAllPosts=async()=>{

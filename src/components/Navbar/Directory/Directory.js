@@ -21,11 +21,11 @@ import  Communities  from './Communities';
 import useMenuButtonTextStore from '../../../stores/NavigatorStore/useMenuButtonTextStore';
 export default function Directory() {
 
-  // const { menuButtonText, setMenuButtonText } = useMenuButtonTextStore();
+  const { menuButtonText, setMenuButtonText } = useMenuButtonTextStore();
 
 
   // this menuButtonText need to corrent
-  let menuButtonText='Home'
+  // let menuButtonText='Home'
   return (
     <Menu>
       {/* If user is logged in then the menu will show */}

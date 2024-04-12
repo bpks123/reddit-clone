@@ -1,10 +1,10 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Box, Text, chakra } from '@chakra-ui/react'
 import AllPagesLayout  from '../../components/Layout/AllPagesLayout'
 import { useLocation } from 'react-router-dom'
 import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import EditPostForm from '../../components/EditPostPageComponents/EditPostForm'
-
+import useMenuButtonTextStore from '../../stores/NavigatorStore/useMenuButtonTextStore'
 
 export default function EditPostPage() {
 
@@ -13,7 +13,13 @@ export default function EditPostPage() {
     // console.log("Edit post: ",location.state.postDetails)
   
     const {isDarkMode} = useThemeStore();
+    const {setMenuButtonText} = useMenuButtonTextStore();
 
+
+    useEffect(()=>{
+      setMenuButtonText('Edit Post');
+      sessionStorage.setItem('menuButtonText', 'Edit Post');
+    }, [])  
 
   return (
     <AllPagesLayout>

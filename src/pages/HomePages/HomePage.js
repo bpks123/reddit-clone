@@ -6,16 +6,25 @@ import CreatePostLink from '../../components/CommunityPageComponent/CreatePostLi
 import HomePagePosts from '../../components/HomePageComponents/HomePagePosts';
 import FilterBox from '../../components/HomePageComponents/FilterBox';
 import Loading from '../../components/HomePageComponents/loading.gif'
+import useMenuButtonTextStore from '../../stores/NavigatorStore/useMenuButtonTextStore';
+
 export default function HomePage() {
 
   const { isLoggedIn } = userLogInStore();
   const [postData, setPostData] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedFilterTab, setSelectedFilterTab] = useState('New');
+  const {setMenuButtonText} = useMenuButtonTextStore();
 
 useEffect(()=>{
     fetchPosts()
 },[selectedFilterTab])
+
+useEffect(()=>{
+  setMenuButtonText('Home');
+  sessionStorage.setItem('menuButtonText', 'Home');
+}, [])  
+
 
 async function fetchPosts(){
     try{
