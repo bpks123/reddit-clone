@@ -7,7 +7,6 @@ import {
   MenuButton,
   MenuList,
   Text,
-  border
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { TiHome } from 'react-icons/ti';
@@ -18,14 +17,15 @@ import { FaEdit, FaRegComment } from 'react-icons/fa';
 import { IoSearch } from "react-icons/io5";
 import { PiShieldCheckeredFill } from "react-icons/pi";
 import  Communities  from './Communities';
+import useThemeStore from '../../../stores/ThemeStore/useThemeStore';
 import useMenuButtonTextStore from '../../../stores/NavigatorStore/useMenuButtonTextStore';
+
 export default function Directory() {
 
   const { menuButtonText, setMenuButtonText } = useMenuButtonTextStore();
+  const { isDarkMode } = useThemeStore();
 
 
-  // this menuButtonText need to corrent
-  // let menuButtonText='Home'
   return (
     <Menu>
       {/* If user is logged in then the menu will show */}
@@ -35,7 +35,7 @@ export default function Directory() {
         borderRadius={4}
         mr={2}
         ml={{ base: 0, md: 2 }}
-        _hover={{ outline: "1px solid", outlineColor:"gray.300" }}
+        _hover={{ outline: "1px solid", outlineColor: isDarkMode ? "#343536" : "gray.300"  }}
       >
         <Flex  align='center'
             justify='space-between'
@@ -58,7 +58,7 @@ export default function Directory() {
                 {/* BELOW IS MENU BUTTON TEXT */}
                 <Text fontWeight={600}
                   fontSize='10pt'
-                  // color={isDarkMode && "#D7DADC"}
+                  color={isDarkMode && "#D7DADC"}
                 >
                   {menuButtonText}
                 </Text>
@@ -66,12 +66,11 @@ export default function Directory() {
 
               </Flex>
               {/* DROP-DOWN ARROW */}
-            <ChevronDownIcon />
+            <ChevronDownIcon  color={isDarkMode && "#D7DADC"}/>
 
         </Flex>
       </MenuButton>
-      <MenuList bg={"white"} maxHeight="300px" overflowY={'auto'}>
-      {/* <MenuList bg={isDarkMode ? "#1a1a1b" : "white"} border={isDarkMode && "1px solid"} borderColor={isDarkMode && "#343536"} maxHeight="300px" overflowY={'auto'}> */}
+      <MenuList bg={isDarkMode ? "#1a1a1b" : "white"} border={isDarkMode && "1px solid"} borderColor={isDarkMode && "#343536"} maxHeight="300px" overflowY={'auto'}>
         <Communities />
         {/* <Communities createdCommunityData={createdCommunityData} handleCommunityClick={handleCommunityClick} userFollowedCommunity={userFollowedCommunity} /> */}
       </MenuList>

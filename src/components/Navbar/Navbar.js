@@ -4,20 +4,25 @@ import  RightContent  from '../Navbar/RightContent/RightContent'
 import  Directory from '../Navbar/Directory/Directory'
 import SearchInput from './SearchInput'
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
+import useThemeStore from '../../stores/ThemeStore/useThemeStore'
+import { useNavigate } from 'react-router-dom'
+
 export default function Navbar() {
 
   const {isLoggedIn} = userLogInStore();
+  const {isDarkMode}  = useThemeStore();
+  const navigateTo = useNavigate();
+
   
   return (
-    <Flex bg={'white'} height='44px' 
+    <Flex bg={isDarkMode ? "#1A1A1B" : 'white'} height='44px' 
           padding={{base: '6px 0px', md: '6px 12px'}}
           justify={{md: 'space-between'}}
-          // borderBottom={isDarkMode && '1px solid'}
-          // borderBottomColor={isDarkMode && '#343536'}
+          borderBottom={isDarkMode && '1px solid'}
+          borderBottomColor={isDarkMode && '#343536'}
           position="sticky"
           top={0}
           zIndex="999"
-
           >
 
        {/* NAVBAR -> LOGO DIV  */}
@@ -26,14 +31,14 @@ export default function Navbar() {
              mr={{base: 0, md: 2}}
              cursor='pointer'
              display={{ md: 'flex'}}
+             onClick={()=>navigateTo('/')}
              >
           {/* reddit logo */}
         <Image src="/images/redditFace.svg" height='30px'  /> 
         {/* reddit text logo */}
-        <Image src={"/images/redditText.svg"} 
-        height={"46px"}
-        // ml={isDarkMode && 1}
-        //unset = oposite of none
+        <Image src={isDarkMode ? "/images/redditWhiteText.svg" : "/images/redditText.svg"}
+        height={isDarkMode ? "16px" : "46px"}
+        ml={isDarkMode && 1}
         display={{base: 'none', md: 'unset'}}/>
        </Flex>
        

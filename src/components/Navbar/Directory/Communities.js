@@ -4,7 +4,15 @@ import { GrAdd } from 'react-icons/gr'
 import { TiHome } from 'react-icons/ti'
 import { FaArrowUpRightDots } from 'react-icons/fa6'
 import  FollowedCommunityList  from './FollowedCommunityList'
+import {useNavigate} from 'react-router-dom'
+import useThemeStore from '../../../stores/ThemeStore/useThemeStore'
+
 export default function Communities() {
+
+  const { isDarkMode } = useThemeStore();
+  const navigateTo = useNavigate();
+  
+
   return (
     <>
       {/* MENU BOX */}
@@ -17,9 +25,10 @@ export default function Communities() {
         <MenuItem
           width='100%'
           fontSize='10pt'
-          // bg={isDarkMode && "#1a1a1b"}
-          // color={isDarkMode && "#d7dadc"}
-          _hover={{ bg:  "gray.100" }}
+          bg={isDarkMode && "#1a1a1b"}
+          color={isDarkMode && "#d7dadc"}
+          _hover={{ bg: isDarkMode ? "#343536" : "gray.100" }}
+          onClick={()=>navigateTo('/')}
           // onClick={(e) => handleCommunityClick(e)}
         >
           <Flex align='center'>
@@ -30,13 +39,14 @@ export default function Communities() {
             Home
           </Flex>
         </MenuItem>
+
         {/* 2nd menu item */}
         <MenuItem
           width='100%'
           fontSize='10pt'
-          // bg={isDarkMode && "#1a1a1b"}
-          // color={isDarkMode && "#d7dadc"}
-          _hover={{ bg: "gray.100" }}
+          bg={isDarkMode && "#1a1a1b"}
+          color={isDarkMode && "#d7dadc"}
+          _hover={{ bg: isDarkMode ? "#343536" : "gray.100" }}
         >
           <Flex align='center'>
             <Icon as={FaArrowUpRightDots}
@@ -56,9 +66,9 @@ export default function Communities() {
         <MenuItem
           width='100%'
           fontSize='10pt'
-          // bg={isDarkMode && "#1a1a1b"}
-          // color={isDarkMode && "#d7dadc"}
-          _hover={{ bg: "gray.100" }}
+          bg={isDarkMode && "#1a1a1b"}
+          color={isDarkMode && "#d7dadc"}
+          _hover={{ bg: isDarkMode ? "#343536" : "gray.100" }}
           // onClick={() => setCommunityModal(true)}
         >
           <Flex align='center'>

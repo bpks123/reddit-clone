@@ -23,11 +23,37 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogin, MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import userLogInStore from '../../../stores/AuthenticationStore/userLogInStore';
+import { useNavigate } from 'react-router-dom';
+import useThemeStore from '../../../stores/ThemeStore/useThemeStore';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function UserMenuModel() {
 
   const { isLoggedIn, setIsLoggedIn } = userLogInStore();
+  const navigateTo = useNavigate();
+  const {isDarkMode, setIsDarkMode} = useThemeStore();
 
+
+  function getUserName(){
+    const userDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'));
+    return userDetails.name;
+   }
+
+  function handleLogout(){
+    // sessionStorage.removeItem('userToken');
+    // sessionStorage.removeItem('loggedInUserDetails');
+    sessionStorage.clear();
+    navigateTo('/');
+    setIsLoggedIn(false); 
+    setIsDarkMode(false);
+    toast.success('Sign out successfully!')
+  }
+
+  function switchTheme(){
+    sessionStorage.setItem('currentTheme', !isDarkMode);
+    setIsDarkMode(!isDarkMode);
+  }
   return (
     <Menu>
       {/* IF USER IS LOGGED IN THEN SHOW MENU BUTTON */}
@@ -35,7 +61,7 @@ export default function UserMenuModel() {
         cursor='pointer'
         padding='0px 6px'
         borderRadius={4}
-        _hover={{ outline: "1px solid", outlineColor: "gray.300" }}
+        _hover={{ outline: "1px solid",  outlineColor: isDarkMode ? "#343536" : "gray.300" }}
       >
        
           <Flex align='center'>
@@ -56,10 +82,8 @@ export default function UserMenuModel() {
                    ml={1}
 
                   >
-                   <Text fontWeight={700} fontSize='10pt' 
-                  //  color={isDarkMode && "#d7dadc"}
-                   >
-                    {/* {getUserName()} It will be difined later*/}Bipin K
+                   <Text fontWeight={700} fontSize='10pt' color={isDarkMode && "#d7dadc"}>
+                    {getUserName()}
                    </Text>
                    <Flex>
                     <Icon as={IoSparkles} color='brand.100' mr={1}/>
@@ -69,21 +93,19 @@ export default function UserMenuModel() {
               </>
 
               {/* DROP-DOWN ARROW */}
-              <ChevronDownIcon 
-              // color={isDarkMode && "#d7dadc"} enables for dark mode
-              />
+              <ChevronDownIcon color={isDarkMode && "#d7dadc"} />
             </Flex>
           </Flex>
         
       </MenuButton>}
       {/* MenuList -> Profile, Darkmode, Logout */}
-      <MenuList border={"none" } bg={"white"}>
+      <MenuList border={isDarkMode ? "1px solid #343536" : "none" } bg={isDarkMode ? "#1a1a1b" : "white"}>
         <MenuItem
           fontSize='10pt'
           fontWeight={700}
-          bg={"white"}
-          // color={isDarkMode && "#d7dadc"}
-          _hover={{ bg:"blue.500", color: 'white' }}
+          bg={isDarkMode ? "#1a1a1b" : "white"}
+          color={isDarkMode && "#d7dadc"}
+          _hover={{ bg: isDarkMode ? "#343536" : "blue.500", color: 'white' }}
           // onClick={handleProfileClick}
         >
           <Flex align="center">
@@ -97,26 +119,26 @@ export default function UserMenuModel() {
          <MenuItem
           fontSize='10pt'
           fontWeight={700}
-          bg={"white"}
-          // color={isDarkMode && "#d7dadc"}
-          _hover={{ bg:"blue.500", color: 'white' }}
-          // onClick={switchTheme}
+          bg={isDarkMode ? "#1a1a1b" : "white"}
+          color={isDarkMode && "#d7dadc"}
+          _hover={{ bg: isDarkMode ? "#343536" : "blue.500", color: 'white' }}
+          onClick={switchTheme}
         >
           <Flex align="center" >
-          <Icon as={MdDarkMode}
+          <Icon as={isDarkMode ? CiLight : MdDarkMode}
               fontSize={20} mr={2}
             />
-            {/* {isDarkMode ? "Light Mode" : "Dark Mode"} */}Dark Mode
+            {isDarkMode ? "Light Mode" : "Dark Mode"}
           </Flex>
         </MenuItem>
          <MenuDivider/>
         <MenuItem
           fontSize='10pt'
           fontWeight={700}
-          bg={"white"}
-          // color={isDarkMode && "#d7dadc"}
-          _hover={{ bg: "blue.500", color: 'white' }}
-          // onClick={handleLogout}
+          bg={isDarkMode ? "#1a1a1b" : "white"}
+          color={isDarkMode && "#d7dadc"}
+          _hover={{ bg: isDarkMode ? "#343536" : "blue.500", color: 'white' }}
+          onClick={handleLogout}
         >
           <Flex align="center">
             <Icon as={MdOutlineLogin}

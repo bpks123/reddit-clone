@@ -5,9 +5,8 @@ import UserIcon from './UserIcon'
 import UserMenuModal  from './UserMenuModel'
 import  LoginModal  from '../../Modal/LoginModal/LoginModal'
 import SignUpModal  from '../../Modal/SignUpModel/SignUpModal'
-
-
 import userLogInStore from '../../../stores/AuthenticationStore/userLogInStore'
+
 export default function RightContent() {
 
   const {isLoggedIn, setIsLoggedIn} = userLogInStore();
