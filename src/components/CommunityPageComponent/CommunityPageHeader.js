@@ -4,6 +4,8 @@ import { FaReddit } from 'react-icons/fa'
 import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 import useSignUpModalStore from '../../stores/ModalStore/SignUpModalStore'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CommunityPageHeader({ communityData, channelId}) {
 
@@ -11,6 +13,13 @@ export default function CommunityPageHeader({ communityData, channelId}) {
   const { isDarkMode } = useThemeStore();
   const { setSignUpModal } = useSignUpModalStore();
   
+  const onClickJoinHandler=()=>{
+    toast.info('This button will work in Progress. It will working soon...',{
+      position: "top-center",
+      autoClose: 2000,
+      theme: isDarkMode?"light":"colored",
+    })
+  }
 
   return (
       <Flex direction="column" width="100%">
@@ -77,6 +86,7 @@ export default function CommunityPageHeader({ communityData, channelId}) {
                 pl={6}
                 borderRadius={'20px'}
                 bg={'orange'}
+                onClick={onClickJoinHandler}
               >
                 {isLoggedIn ? "Join":"Login To Join"}
               </Button>
