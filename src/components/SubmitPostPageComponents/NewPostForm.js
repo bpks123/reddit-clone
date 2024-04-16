@@ -33,7 +33,7 @@ const formTabs = [
     },
 ]
 
-export default function NewPostForm() {
+export default function NewPostForm({channelId}) {
 
     const {isDarkMode} = useThemeStore();
     const navigateTo=useNavigate()
@@ -72,11 +72,18 @@ export default function NewPostForm() {
             setErrorMsg("Title characters can't be more than 100");
             return;
         }
+        if(textInputs.title.length<2){
+            setErrorMsg("Title character should be greater than 1");
+            return;
+        }
         setIsLoading(true);
         const postData = new FormData();
         postData.append('title', textInputs.title);
         postData.append('content', textInputs.content);
 
+        if(channelId){
+            postData.append('channelId', channelId);
+        }
         if (uploadedImage) {  
             postData.append('images', uploadedImage, uploadedImage.name);
             // console.log("uploading image", uploadedImage);
@@ -101,7 +108,12 @@ export default function NewPostForm() {
             let result=await response.json()
             console.log("Post Edited: ",result)
             setIsLoading(false)
-            navigateTo('/')
+            if(channelId){
+                navigateTo(`/community/${channelId}`);
+            }
+            else{
+                navigateTo('/');
+            }
              
       }
       catch(error){

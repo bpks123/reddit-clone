@@ -6,8 +6,9 @@ import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 import useLogInModalStore from '../../stores/ModalStore/LogInModalStore'
 import { useNavigate } from 'react-router-dom'
 import useThemeStore from '../../stores/ThemeStore/useThemeStore'
-
-export default function CreatePostLink() {
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+export default function CreatePostLink({ channelId, isJoined }) {
   
   const { isLoggedIn } = userLogInStore();
   const {setLogInModal}=useLogInModalStore();
@@ -22,7 +23,21 @@ export default function CreatePostLink() {
         return;
       }
 
-    navigateTo('/submitpost');
+    // Before creating post check if user joined community or not only in community page
+    if (channelId) {
+
+      if (!isJoined) {
+        toast.info('You have not joined the community',{
+          position: "top-center",
+          autoClose: 2000,
+          theme: isDarkMode?"light":"colored",
+        })
+        return;
+      }
+
+    }
+
+    navigateTo('/submitpost',{ state: { channelId } });
   }
     
   return (

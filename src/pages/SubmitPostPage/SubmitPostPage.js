@@ -36,7 +36,7 @@ export default function SubmitPostPage() {
               Create a Post
             </Text>
           </Box>
-          <NewPostForm/>
+          <NewPostForm channelId={location.state.channelId && location.state.channelId}/>
         </>
 
         {/* RHS */}

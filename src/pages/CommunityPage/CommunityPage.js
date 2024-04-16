@@ -74,22 +74,37 @@ export default function CommunityPage() {
 
 
   return (
-    <div style={{
-      backgroundColor: isDarkMode ? "rgb(0,0,0)" : "rgba(211,211,211,0.8)",
-      minHeight: getHeight,
-    }}>
-      <CommunityPageHeader communityData={communityData} channelId={channelId}/>
+    <div
+      style={{
+        backgroundColor: isDarkMode ? "rgb(0,0,0)" : "rgba(211,211,211,0.8)",
+        minHeight: getHeight,
+      }}
+    >
+      <CommunityPageHeader
+        communityData={communityData}
+        channelId={channelId}
+        isJoined={isJoined} setIsJoined={setIsJoined}
+      />
       <AllPagesLayout>
         {/* Left side  */}
         <>
-          <CreatePostLink/>
-          <CommunityPosts/>
+          <CreatePostLink channelId={channelId} isJoined={isJoined}/>
+          <CommunityPosts
+            communityPosts={communityPosts}
+            increaseVote={increaseVote}
+            decreaseVote={decreaseVote}
+            channelId={channelId}
+            deletePost={deletePost}
+            editPost={editPost}
+            handleComment={handleComment}
+            isJoined={isJoined}
+          />
         </>
         {/* Right Side */}
         <>
-          <AboutCommunityRHS communityData={communityData}/>
+          <AboutCommunityRHS communityData={communityData} />
         </>
       </AllPagesLayout>
     </div>
-  )
+  );
 }
