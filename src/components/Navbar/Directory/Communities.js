@@ -6,13 +6,21 @@ import { FaArrowUpRightDots } from 'react-icons/fa6'
 import  FollowedCommunityList  from './FollowedCommunityList'
 import {useNavigate} from 'react-router-dom'
 import useThemeStore from '../../../stores/ThemeStore/useThemeStore'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Communities() {
 
   const { isDarkMode } = useThemeStore();
   const navigateTo = useNavigate();
   
-
+const onHandleClick=()=>{
+  toast.info('This page is coming soon...',{
+    position: "top-center",
+    autoClose: 3000,
+    theme: isDarkMode?"light":"colored",
+  })
+}
   return (
     <>
       {/* MENU BOX */}
@@ -29,7 +37,6 @@ export default function Communities() {
           color={isDarkMode && "#d7dadc"}
           _hover={{ bg: isDarkMode ? "#343536" : "gray.100" }}
           onClick={()=>navigateTo('/')}
-          // onClick={(e) => handleCommunityClick(e)}
         >
           <Flex align='center'>
             <Icon as={TiHome}
@@ -47,6 +54,7 @@ export default function Communities() {
           bg={isDarkMode && "#1a1a1b"}
           color={isDarkMode && "#d7dadc"}
           _hover={{ bg: isDarkMode ? "#343536" : "gray.100" }}
+          onClick={onHandleClick}
         >
           <Flex align='center'>
             <Icon as={FaArrowUpRightDots}
@@ -69,7 +77,7 @@ export default function Communities() {
           bg={isDarkMode && "#1a1a1b"}
           color={isDarkMode && "#d7dadc"}
           _hover={{ bg: isDarkMode ? "#343536" : "gray.100" }}
-          // onClick={() => setCommunityModal(true)}
+          onClick={onHandleClick}
         >
           <Flex align='center'>
             <Icon as={GrAdd}
