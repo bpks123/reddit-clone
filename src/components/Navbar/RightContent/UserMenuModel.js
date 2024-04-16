@@ -86,7 +86,7 @@ export default function UserMenuModel() {
                     {getUserName()}
                    </Text>
                    <Flex>
-                    <Icon as={IoSparkles} color='brand.100' mr={1}/>
+                    <Icon as={IoSparkles} color={isDarkMode?"white":'brand.100'} mr={1}/>
                     <Text color='gray.400' >1 karma</Text>
                    </Flex>
                 </Flex>

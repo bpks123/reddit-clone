@@ -59,6 +59,7 @@ export default function TextInputs({textInputs, handleInputChange, handleCreateP
           padding="0px 30px"
           isDisabled={!textInputs.title}
           isLoading={isLoading}
+          bg='orange'
           onClick={handleCreatePost}
 
         >Post</Button>

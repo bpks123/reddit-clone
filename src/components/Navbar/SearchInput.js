@@ -27,7 +27,7 @@ export default function SearchInput() {
                     _placeholder={{ color: "gray.500" }}
                     
                     _hover={{
-                        bg:'white',
+                        bg:isDarkMode ? "#343536" :'white',
                         border: '1px solid',
                         borderColor: isDarkMode ? "white" : "blue.500",
                     }}
@@ -49,7 +49,7 @@ export default function SearchInput() {
                 borderRadius="20px"
                 ml={1}
                 isDisabled={!searchText.length}
-
+                bg={'orange'}
             >
                 Search
             </Button>

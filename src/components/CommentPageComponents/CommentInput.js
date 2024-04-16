@@ -3,7 +3,7 @@ import { Button, Flex, Icon, Text, Textarea } from '@chakra-ui/react'
 import {CiCirclePlus} from "react-icons/ci"
 import useLogInModalStore from '../../stores/ModalStore/LogInModalStore'
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
-
+import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 
 export default function CommentInput({ commentText, setCommentText, handleCommentClick, btnLoading }) {
 
@@ -11,6 +11,8 @@ export default function CommentInput({ commentText, setCommentText, handleCommen
 
   const {isLoggedIn, setIsLoggedIn} = userLogInStore();
   const {setLogInModal}=useLogInModalStore()
+  const {isDarkMode} = useThemeStore();
+
   return (
     <Flex direction="column" position="relative">
       {
@@ -28,13 +30,13 @@ export default function CommentInput({ commentText, setCommentText, handleCommen
                     pb={10}
                     border="none"
                     outline="1px solid"
-                    outlineColor={"gray.300"}
-                    // color={isDarkMode && "#d7dadc"}
+                    outlineColor={isDarkMode ? "#343536" : "gray.300"}
+                    color={isDarkMode && "#d7dadc"}
                     placeholder='What are your thoughts?'
                     _placeholder={{ color: "gray.500" }}
                     _focus={{
                         outline: "none",
-                        bg: "white",
+                        bg: isDarkMode ? "#272729" : "white",
                         border: "1px solid black"
                     }}
                     
@@ -42,13 +44,13 @@ export default function CommentInput({ commentText, setCommentText, handleCommen
                 : 
                  <Flex align='center' justify='center'
                         border="1px solid" 
-                        borderColor={"brand.100"} 
-                        color={"brand.100"}
+                        borderColor={isDarkMode ? "#d7dadc" : "brand.100"} 
+                        color={isDarkMode ? "#d7dadc" : "brand.100"}
                         width='50%' 
                         borderRadius="20px" 
                         padding='6px'
                         cursor="pointer"
-                        _hover={{bg: "gray.100"}}
+                        _hover={{bg: isDarkMode ? "#343536" : "gray.100"}}
                         onClick={()=> setLogInModal(true)}
 
                         >

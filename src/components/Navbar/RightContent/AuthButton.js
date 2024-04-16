@@ -14,6 +14,7 @@ export default function AuthButton() {
      width={{base: "70px", md: "110px"}}
      mr={2}
      onClick={()=>setLogInModal(true)}
+     bg={'orange'}
      >Login</Button>
 
      <Button variant='solid' height='28px'
@@ -21,6 +22,7 @@ export default function AuthButton() {
      width={{base: "70px", md: '110px' }}
      mr={2}
      onClick={()=>setSignUpModal(true)}
+     bg={'orange'}
      >Sign Up</Button>
 
     </>

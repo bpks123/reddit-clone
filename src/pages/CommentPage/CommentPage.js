@@ -8,6 +8,7 @@ import useMenuButtonTextStore from '../../stores/NavigatorStore/useMenuButtonTex
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Comments from '../../components/CommentPageComponents/Comments';
+import useThemeStore from '../../stores/ThemeStore/useThemeStore';
 export default function CommentPage() {
 
     const { postId } = useParams();
@@ -20,9 +21,11 @@ export default function CommentPage() {
 
     const [currentPostDetails, setCurrentPostDetails] = useState(null);
     const [allComments, setAllComments] = useState(null);
+    const {isDarkMode} = useThemeStore();
 
     const [commentText, setCommentText] = useState('');
     const [btnLoading, setBtnLoading] = useState(false);
+    const [getHeight,setHeight]=useState(window.innerHeight-44)
 
 
     useEffect(()=>{
@@ -190,7 +193,7 @@ const increaseLike=async(postId)=>{
 
   }
   return (
-    
+    <div style={{backgroundColor:isDarkMode?"rgb(0,0,0)":"rgba(211,211,211,0.8)", minHeight:getHeight}}>
       <AllPagesLayout>
         {currentPostDetails && 
         <>
@@ -214,6 +217,6 @@ const increaseLike=async(postId)=>{
         {/* Right side heading */}
         </>
       </AllPagesLayout>
-  
+  </div>
   )
 }

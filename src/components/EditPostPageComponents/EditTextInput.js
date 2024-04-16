@@ -62,6 +62,7 @@ export default function EditTextInput({errorMsg, textInputs, handleInputChange, 
           isDisabled={!textInputs.title}
           isLoading={isLoading}
           onClick={handleEditPost}
+          bg={'orange'}
         >Post</Button>
        </Flex>
    </Stack>

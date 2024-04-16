@@ -7,6 +7,8 @@ import HomePagePosts from '../../components/HomePageComponents/HomePagePosts';
 import FilterBox from '../../components/HomePageComponents/FilterBox';
 import Loading from '../../components/HomePageComponents/loading.gif'
 import useMenuButtonTextStore from '../../stores/NavigatorStore/useMenuButtonTextStore';
+import CommunityRecommendation from '../../components/HomePageComponents/CommunityRecommendation';
+import useThemeStore from '../../stores/ThemeStore/useThemeStore';
 
 export default function HomePage() {
 
@@ -15,6 +17,8 @@ export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedFilterTab, setSelectedFilterTab] = useState('New');
   const {setMenuButtonText} = useMenuButtonTextStore();
+  const {isDarkMode} = useThemeStore();
+  const [getHeight,setHeight]=useState(window.innerHeight-44)
 
 useEffect(()=>{
     fetchPosts()
@@ -78,23 +82,26 @@ async function fetchPosts(){
     }
 }
   return (
-    <AllPagesLayout>
+    <div style={{backgroundColor:isDarkMode?"rgb(0,0,0)":"rgba(211,211,211,0.8)", minHeight:getHeight}}>
+      <AllPagesLayout>
 
-      {/* Left Hand Side */}
-      <>
-        <CreatePostLink/>
-        {isLoggedIn && <FilterBox selectedFilterTab={selectedFilterTab} setSelectedFilterTab={setSelectedFilterTab}/>}
-        {postData.length>0? 
-        <HomePagePosts postData={postData} setPostData={setPostData} fetchPosts={fetchPosts} />
-          :<img width={'100px'} style={{marginLeft:'40%',marginTop:'20%'}} src={Loading}/>
-        }
-        </>
-      {/* Right Hand side */}
-      <>
-        Right content
-      </>
-      
-      
+{/* Left Hand Side */}
+  <>
+    <CreatePostLink/>
+    {isLoggedIn && <FilterBox selectedFilterTab={selectedFilterTab} setSelectedFilterTab={setSelectedFilterTab}/>}
+    {postData.length>0? 
+      <HomePagePosts postData={postData} setPostData={setPostData} fetchPosts={fetchPosts} />
+        :<img width={'100px'} style={{marginLeft:'40%',marginTop:'20%'}} src={Loading}/>
+  }
+  </>
+{/* Right Hand side */}
+  <>
+    <CommunityRecommendation/>
+  </>
+
+
     </AllPagesLayout>
+    </div>
+    
   )
 }

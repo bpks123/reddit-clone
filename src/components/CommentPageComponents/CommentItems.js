@@ -4,13 +4,15 @@ import { FaReddit } from 'react-icons/fa'
 import { MdDelete } from "react-icons/md";
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 import { useNavigate } from 'react-router-dom'
-
+import useThemeStore from '../../stores/ThemeStore/useThemeStore';
 
 export default function CommentItems({comment,deleteComment}) {
 
     const {isLoggedIn} = userLogInStore();
     const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails') ) ;
     const navigateTo = useNavigate();
+    const {isDarkMode} = useThemeStore();
+
 
     function timeStamp(timeString){
         const dateObject = new Date(timeString);
@@ -34,7 +36,7 @@ export default function CommentItems({comment,deleteComment}) {
             <Stack spacing={1}>
                 <Stack direction="row" align="center" fontSize="8pt">
                     <Text fontWeight={700} 
-                        //   color={isDarkMode &&  "#d7dadc"}
+                          color={isDarkMode &&  "#d7dadc"}
                            _hover={{color: "blue.500"}} 
                            cursor="pointer"
                         //    onClick={()=> redirectToProfile(comment.author)}
@@ -44,7 +46,7 @@ export default function CommentItems({comment,deleteComment}) {
                     <Text color="gray.500">{timeStamp(comment.createdAt)}</Text>
                 </Stack>
 
-                <Text fontSize="10pt" >{comment.content}</Text>
+                <Text fontSize="10pt" color={isDarkMode &&  "#d7dadc"}>{comment.content}</Text>
                 
                 {/* Delete post is visible is user added comment. */}
                 <Stack direction="row" align="center" cursor="pointer" color="gray.500">

@@ -2,15 +2,21 @@ import React from 'react'
 import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import CommentItems from './CommentItems'
 import CommentInput from './CommentInput'
+import useThemeStore from '../../stores/ThemeStore/useThemeStore'
+
 export default function Comments({postId, commentText, setCommentText, btnLoading,  handleCommentClick, allComments, deleteComment}) {
+
+  const {isDarkMode} = useThemeStore();
+
   return (
-    <Box bg={"white"} 
-         borderRadius="4px" 
-         p={2}
-         border="1px solid"
-         borderColor={'gray.300'} 
-         _hover={{ borderColor: "gray.500" }} 
-         mt={1.5}
+    <Box 
+      bg={isDarkMode ? "#1a1a1b" : "white"}
+      borderRadius="0px 0px 4px 4px"
+      p={2}
+      border="1px solid"
+      borderColor={isDarkMode ? "#343536" : "gray.300"}
+      _hover={{ borderColor: "gray.500" }}
+      mt={1}
     >
         <Flex
         direction="column"
@@ -40,7 +46,7 @@ export default function Comments({postId, commentText, setCommentText, btnLoadin
                 />
                 ))
             ):(
-              <Text textAlign="center" >
+              <Text textAlign="center" color={isDarkMode && "#d7dadc"}>
               No comments on this post
             </Text>
             )

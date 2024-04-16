@@ -44,15 +44,15 @@ export default function Directory() {
 
               <Flex align='center'> 
                 {/* <Icon as={menuButtonText === 'Home' ? TiHome : menuButtonText === 'Oops!!!' ? MdError : FaReddit} fontSize={24} mr={{ base: 1, md: 2 }} color={menuButtonText !== 'Home' ? "blue.400" : isDarkMode ? "#D7DADC" : "black"} /> */}
-              {menuButtonText == 'Home' && <Icon as={TiHome} fontSize={24} mr={{ base: 1, md: 2 }} color={"black"}/>}
-             {menuButtonText.startsWith('r/') && <Icon as={FaReddit} fontSize={24} mr={{ base: 1, md: 2 }} color="blue.400" bg={"white"} borderRadius="20px"/>}
-              {menuButtonText == 'Create Post' && <Icon as={IoMdAdd} fontSize={24} mr={{ base: 1, md: 2 }} color={"black"}/>}
-              {menuButtonText == 'Edit Post' && <Icon as={FaEdit} fontSize={20} mr={{ base: 1, md: 2 }} color={"black"}/>}
-              {menuButtonText == 'Post' && <Icon as={FaRegComment} fontSize={20} mr={{ base: 1, md: 2 }} color={"black"}/>}
-              {menuButtonText == 'Search Result' && <Icon as={IoSearch} fontSize={24} mr={{ base: 1, md: 2 }} color={"black"}/>}
-              {menuButtonText == 'Premium' && <Icon as={PiShieldCheckeredFill} fontSize={24} mr={{ base: 1, md: 2 }} color="brand.100"/>}
-              {menuButtonText == 'Profile' && <Image src='/images/ProfileWhiteAvatarIcon.png' width="30px" height="30px" mr={{ base: 1, md: 2 }} borderRadius="20px" objectFit="cover"/>}
-              {menuButtonText == 'Oops!!!' && <Icon as={MdError} fontSize={24} mr={{ base: 1, md: 2 }} color="brand.100"/>}
+                {menuButtonText == 'Home' && <Icon as={TiHome} fontSize={24} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
+                {menuButtonText.startsWith('r/') && <Icon as={FaReddit} fontSize={24} mr={{ base: 1, md: 2 }} color="blue.400" bg={isDarkMode && "white"} borderRadius="20px"/>}
+                {menuButtonText == 'Create Post' && <Icon as={IoMdAdd} fontSize={24} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
+                {menuButtonText == 'Edit Post' && <Icon as={FaEdit} fontSize={20} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
+                {menuButtonText == 'Post' && <Icon as={FaRegComment} fontSize={20} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
+                {menuButtonText == 'Search Result' && <Icon as={IoSearch} fontSize={24} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
+                {menuButtonText == 'Premium' && <Icon as={PiShieldCheckeredFill} fontSize={24} mr={{ base: 1, md: 2 }} color="brand.100"/>}
+                {menuButtonText == 'Profile' && <Image src='/images/ProfileWhiteAvatarIcon.png' width="30px" height="30px" mr={{ base: 1, md: 2 }} borderRadius="20px" objectFit="cover"/>}
+                {menuButtonText == 'Oops!!!' && <Icon as={MdError} fontSize={24} mr={{ base: 1, md: 2 }} color="brand.100"/>}
               
               <Flex display={{ base: "none", lg: 'flex' }} >
                 {/* BELOW IS MENU BUTTON TEXT */}

@@ -23,17 +23,17 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
   return (
     // Posting card Details
     <Flex
-      border="1px solid"
-      bg={"white"}
-      borderColor={"gray.300"}
-      borderRadius={4}
-      _hover={{ borderColor: "gray.500" }}
+    border='1px solid'
+    bg={isDarkMode ? "#1a1a1b" : "white"}
+    borderColor={isDarkMode ? "#343536" : 'gray.300'}
+    borderRadius={4}
+    _hover={{ borderColor: "gray.500" }}
     >
       {/* VOTING BUTTON COLUMN Like and dislike*/}
       <Flex
         direction="column"
         align="center"
-        bg={"gray.100"}
+        bg={isDarkMode ? "#101113" : "gray.100"}
         p={2}
         width="40px"
         borderRadius={4}
@@ -47,7 +47,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             onClick={() => increaseLike(post._id)}
         />
         {/* Total like count text */}
-        <Text fontSize="9pt" fontWeight={600}>
+        <Text fontSize="9pt" fontWeight={600} color={isDarkMode && "#d7dadc"}>
           {post.likeCount}
         </Text>
 
@@ -88,7 +88,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
                   mr={1}
                   borderRadius="20px"
                   color="brand.100"
-                //   bg={isDarkMode && "white"}
+                  bg={isDarkMode && "white"}
                 />
               )
             ) : (
@@ -98,7 +98,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
                 mr={1}
                 color="red"
                 borderRadius="20px"
-                // bg={isDarkMode && "white"}
+                bg={isDarkMode && "white"}
               />
             )}
 
@@ -107,7 +107,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
               <Text
                 mr={1}
                 cursor="pointer"
-                // color={isDarkMode && "#d7dadc"}
+                color={isDarkMode && "#d7dadc"}
                 _hover={{ color: "blue.500" }}
                 fontWeight={700}
                 // onClick={() => navigateTo(`/community/${post.channel._id}`)}
@@ -129,12 +129,12 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
           {/* TITLE AND CONTENT */}
           { post.title && 
             <Text fontSize="14pt" fontWeight={600} 
-            // color={isDarkMode && "#d7dadc"} 
+            color={isDarkMode && "#d7dadc"} 
             >{post.title} 
             </Text> }
           {post.content && 
             <Text fontSize="10pt" 
-            // color={isDarkMode && "#d7dadc"}
+            color={isDarkMode && "#d7dadc"}
             >{post.content}
             </Text>}
 
@@ -148,14 +148,14 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
         </Stack>
 
         {/* COMMENT SHARE SAVE BUTTON */}
-        <Flex ml={1} mb={0.5} color={"gray.500"} >
+        <Flex ml={1} mb={0.5} color={isDarkMode ? "#818384" : "gray.500"} >
 
         {/* Comment */}
           <Flex
             align="center"
             padding="8px 10px"
             borderRadius={4}
-            _hover={{ bg:"gray.200" }}
+            _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
             cursor="pointer"
             onClick={() => handleComment(post)}
           >
@@ -168,7 +168,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             align="center"
             padding="8px 10px"
             borderRadius={4}
-            _hover={{ bg:  "gray.200" }}
+            _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
             cursor="pointer"
           >
             <Icon as={IoArrowRedoOutline} mr={2} />
@@ -180,7 +180,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             align="center"
             padding="8px 10px"
             borderRadius={4}
-            _hover={{ bg:  "gray.200" }}
+            _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
             cursor="pointer"
           >
             <Icon as={IoBookmarkOutline} mr={2} />
