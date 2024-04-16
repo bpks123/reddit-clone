@@ -10,16 +10,9 @@ export default function CommunityPageHeader({ communityData, channelId}) {
   const { isLoggedIn } = userLogInStore();
   const { isDarkMode } = useThemeStore();
   const { setSignUpModal } = useSignUpModalStore();
-  const [getHeight,setHeight]=useState(window.innerHeight-44)
   
 
   return (
-    <div
-      style={{
-        backgroundColor: isDarkMode ? "rgb(0,0,0)" : "rgba(211,211,211,0.8)",
-        minHeight: getHeight,
-      }}
-    >
       <Flex direction="column" width="100%">
         {/* 1st image */}
         <Image
@@ -91,6 +84,5 @@ export default function CommunityPageHeader({ communityData, channelId}) {
           </Flex>
         </Flex>
       </Flex>
-    </div>
   );
 }
