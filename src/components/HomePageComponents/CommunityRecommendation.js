@@ -52,7 +52,7 @@ useEffect(()=>{
         backgroundSize="cover"
         bgGradient="linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75)), url('images/topCommunites.jpg')"
       >
-        Top Communities
+        Popular Communities
       </Flex>
       <Flex direction="column">
         {

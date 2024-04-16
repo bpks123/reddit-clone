@@ -14,6 +14,7 @@ export default function AuthButton() {
      width={{base: "70px", md: "110px"}}
      mr={2}
      onClick={()=>setLogInModal(true)}
+     borderRadius={'20px'}
      bg={'orange'}
      >Login</Button>
 
@@ -21,6 +22,7 @@ export default function AuthButton() {
      display={{base: 'none', sm: 'flex'}}
      width={{base: "70px", md: '110px' }}
      mr={2}
+     borderRadius={'20px'}
      onClick={()=>setSignUpModal(true)}
      bg={'orange'}
      >Sign Up</Button>
