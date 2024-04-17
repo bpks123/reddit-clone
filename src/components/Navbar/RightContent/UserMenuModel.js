@@ -34,6 +34,7 @@ export default function UserMenuModel() {
   const navigateTo = useNavigate();
   const {isDarkMode, setIsDarkMode} = useThemeStore();
 
+  const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'))
 
   function getUserName(){
     const userDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'));
@@ -54,6 +55,11 @@ export default function UserMenuModel() {
     sessionStorage.setItem('currentTheme', !isDarkMode);
     setIsDarkMode(!isDarkMode);
   }
+
+  function handleProfileClick(){
+    navigateTo(`/profile/${loggedInUserDetails._id}`)
+  }
+
   return (
     <Menu>
       {/* IF USER IS LOGGED IN THEN SHOW MENU BUTTON */}
@@ -106,7 +112,7 @@ export default function UserMenuModel() {
           bg={isDarkMode ? "#1a1a1b" : "white"}
           color={isDarkMode && "#d7dadc"}
           _hover={{ bg: isDarkMode ? "#343536" : "blue.500", color: 'white' }}
-          // onClick={handleProfileClick}
+          onClick={handleProfileClick}
         >
           <Flex align="center">
             <Icon as={CgProfile}
