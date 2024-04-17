@@ -54,7 +54,7 @@ export default function AboutCommunityRHS({communityData,communityPosts,isJoined
           <Flex align={'center'} width="100%" p={1} fontSize="10pt" fontWeight={500} color={isDarkMode && "#d7dadc"}>
             <Icon as={BsFilePost} fontSize={18} mr={2} />
             {communityPosts && <Text >{communityPosts.length} Posts</Text>}
-            {!communityPosts && <Text >0 Posts</Text>}
+            {/* {!communityPosts && <Text >0 Posts</Text>} */}
           </Flex>
 
            

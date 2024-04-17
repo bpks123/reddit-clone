@@ -1,19 +1,20 @@
-import React,{useState} from 'react'
-import { Flex, Heading, Icon, Image, Stack, Text } from '@chakra-ui/react'
-import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { Stack, Text } from '@chakra-ui/react';
+import useThemeStore from '../../stores/ThemeStore/useThemeStore';
+import userLogInStore from '../../stores/AuthenticationStore/userLogInStore';
+import useLogInModalStore from '../../stores/ModalStore/LogInModalStore';
+import PostItem from '../HomePageComponents/PostItem';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useLogInModalStore from '../../stores/ModalStore/LogInModalStore'
-import PostItem from './PostItem'
-import { useNavigate } from 'react-router-dom';
 
+export default function UserPosts({ userPosts, setUserPosts, fetchPosts }) {
 
-export default function HomePagePosts({postData, setPostData, fetchPosts}) {
-
-  const {isLoggedIn, setIsLoggedIn} = userLogInStore();
+  const { isLoggedIn, setIsLoggedIn } = userLogInStore();
   const {setLogInModal}=useLogInModalStore()
+  const { isDarkMode } = useThemeStore();
+  const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'));
   const navigateTo = useNavigate();
-  console.log(postData)
 
   // For increase the like when user press like button
   const increaseLike=async(postId)=>{
@@ -43,7 +44,6 @@ export default function HomePagePosts({postData, setPostData, fetchPosts}) {
    }
   }
 
-  // For decrease the like button when user dislike the posts
   const decreaseLike=async(postId)=>{
     if(!isLoggedIn){
       setLogInModal(true);
@@ -104,10 +104,11 @@ export default function HomePagePosts({postData, setPostData, fetchPosts}) {
   function handleComment(postDetails){
     navigateTo(`/comment/${postDetails._id}`, {state: {postDetails}});
  }
+
   return (
     <>
-      <Stack>
-        {postData.map((post, index) => (
+    <Stack>
+        {userPosts.length>0 ? userPosts.map((post, index) => (
           <PostItem
             key={index}
             post={post}
@@ -117,8 +118,11 @@ export default function HomePagePosts({postData, setPostData, fetchPosts}) {
             deletePost={deletePost}
             handleComment={handleComment}
           />
-        ))}
+        ))
+          :
+        <Text color={isDarkMode && "#d7dadc"}>No posts</Text>
+        }
       </Stack>
     </>
-  );
+  )
 }

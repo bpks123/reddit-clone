@@ -16,9 +16,16 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
   const {setLogInModal}=useLogInModalStore()
   const { isDarkMode } = useThemeStore();
   const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'));
-  const token = sessionStorage.getItem('userToken');
   const navigateTo = useNavigate();
 
+
+  function redirectToProfile(userId) {
+    if(!isLoggedIn){
+      setLogInModal(true);
+      return;
+    }
+    navigateTo(`/profile/${userId}`);
+  }
 
   return (
     // Posting card Details
@@ -110,7 +117,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
                 color={isDarkMode && "#d7dadc"}
                 _hover={{ color: "blue.500" }}
                 fontWeight={700}
-                // onClick={() => navigateTo(`/community/${post.channel._id}`)}
+                onClick={() => navigateTo(`/community/${post.channel._id}`)}
               >r/{post.channel.name}
               </Text>}
 
@@ -118,7 +125,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
               <Text color="gray.500">
               Posted by <chakra.span cursor="pointer"
                _hover={{ textDecoration: "underline", color: "gray.600" }}
-                // onClick={() => redirectToProfile(post.author._id)}
+                onClick={() => redirectToProfile(post.author._id)}
               >
                 u/{post.author.name}
               </chakra.span>

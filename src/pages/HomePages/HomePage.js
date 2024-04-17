@@ -32,7 +32,7 @@ useEffect(()=>{
 
 async function fetchPosts(){
     try{
-        let response=await fetch('https://academics.newtonschool.co/api/v1/reddit/post',{
+        let response=await fetch('https://academics.newtonschool.co/api/v1/reddit/post?limit=1000',{
             headers:  {
                 'projectID': '7k1ct68pbbmr'
             }

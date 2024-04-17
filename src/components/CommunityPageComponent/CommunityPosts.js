@@ -4,11 +4,11 @@ import useThemeStore from '../../stores/ThemeStore/useThemeStore';
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore';
 import useLogInModalStore from '../../stores/ModalStore/LogInModalStore'
 import { useNavigate } from 'react-router-dom'
-
+import PostItem from '../HomePageComponents/PostItem'
 import { toast } from 'react-toastify';
 
-export default function CommunityPosts({ communityPosts, increaseVote, decreaseVote, channelId, deletePost, editPost, handleComment, isJoined }) {
-
+export default function CommunityPosts({ communityPosts, increaseLike, decreaseLike, channelId, deletePost, editPost, handleComment, isJoined }) {
+console.log(communityPosts.length)
   const navigateTo = useNavigate();
   const { isDarkMode } = useThemeStore();
   const {isLoggedIn} = userLogInStore();
@@ -42,8 +42,11 @@ export default function CommunityPosts({ communityPosts, increaseVote, decreaseV
   return (
     <>
             <Stack>
-                
-                    {/* IF THERE ARE NO POSTS SHOW ADD A POST BUTTON */}
+                {
+                  communityPosts.length>0? communityPosts.map((post, index)=>(
+                    <PostItem key={index} post={post} increaseLike={increaseLike} decreaseLike={decreaseLike} deletePost={deletePost} editPost={editPost} handleComment={handleComment} />
+                  )):(
+                    // IF THERE ARE NO POSTS SHOW ADD A POST BUTTON 
                     <Stack padding={10} align="center" justify="center" border="1px dashed" borderColor={isDarkMode ? "#343536" : "black"} borderRadius="4px" height="300px">
                         <Text fontSize="15pt" fontWeight={700}>There are no posts in this subreddit</Text>
                         <Button height="34px" onClick={onClickHandleAddPost}
@@ -51,6 +54,9 @@ export default function CommunityPosts({ communityPosts, increaseVote, decreaseV
                           borderRadius={'20px'}
                           >Add a post</Button>
                     </Stack>
+                  )
+                }
+                    
                 
             </Stack>
         </>
