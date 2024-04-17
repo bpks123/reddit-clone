@@ -119,7 +119,7 @@ export default function UserPosts({ userPosts, setUserPosts, fetchPosts }) {
             handleComment={handleComment}
           />
         ))
-          :
+        :
         <Text color={isDarkMode && "#d7dadc"}>No posts</Text>
         }
       </Stack>
