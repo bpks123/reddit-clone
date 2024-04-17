@@ -7,7 +7,7 @@ import useLogInModalStore from '../../stores/ModalStore/LogInModalStore';
 import PostItem from '../HomePageComponents/PostItem';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Loading from '../HomePageComponents/loading.gif'
 export default function UserPosts({ userPosts, setUserPosts, fetchPosts }) {
 
   const { isLoggedIn, setIsLoggedIn } = userLogInStore();
@@ -120,7 +120,7 @@ export default function UserPosts({ userPosts, setUserPosts, fetchPosts }) {
           />
         ))
         :
-        <Text color={isDarkMode && "#d7dadc"}>No posts</Text>
+        <img width={'100px'} style={{marginLeft:'40%',marginTop:'20%'}} src={Loading}/>
         }
       </Stack>
     </>
