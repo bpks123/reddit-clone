@@ -15,7 +15,7 @@ export default function Navbar() {
 
   
   return (
-    <Flex bg={isDarkMode ? "#1A1A1B" : 'white'} height='44px' 
+    <Flex bg={isDarkMode ? "#1A1A1B" : 'white'} height='50px' 
           padding={{base: '6px 0px', md: '6px 12px'}}
           justify={{md: 'space-between'}}
           borderBottom={isDarkMode && '1px solid'}

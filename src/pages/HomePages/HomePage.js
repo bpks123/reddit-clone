@@ -9,6 +9,8 @@ import Loading from '../../components/HomePageComponents/loading.gif'
 import useMenuButtonTextStore from '../../stores/NavigatorStore/useMenuButtonTextStore';
 import CommunityRecommendation from '../../components/HomePageComponents/CommunityRecommendation';
 import useThemeStore from '../../stores/ThemeStore/useThemeStore';
+import RedditPrimiumBox from '../../components/HomePageComponents/RHSComponent/RedditPrimiumBox';
+import RedditHomeBox from '../../components/HomePageComponents/RHSComponent/RedditHomeBox';
 
 export default function HomePage() {
 
@@ -18,7 +20,7 @@ export default function HomePage() {
   const [selectedFilterTab, setSelectedFilterTab] = useState('New');
   const {setMenuButtonText} = useMenuButtonTextStore();
   const {isDarkMode} = useThemeStore();
-  const [getHeight,setHeight]=useState(window.innerHeight-44)
+  const [getHeight,setHeight]=useState(window.innerHeight-50)
 
 useEffect(()=>{
     fetchPosts()
@@ -96,6 +98,8 @@ async function fetchPosts(){
   </>
 {/* Right Hand side */}
   <>
+     {isLoggedIn && <RedditPrimiumBox/>}
+     {isLoggedIn && <RedditHomeBox/>}
     <CommunityRecommendation/>
   </>
 

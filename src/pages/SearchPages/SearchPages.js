@@ -29,7 +29,7 @@ export default function SearchPages() {
   const {setMenuButtonText} = useMenuButtonTextStore();
   const [posts, setPosts] = useState(null);
   const [communities, setCommunities] = useState(null);
-  const [getHeight,setHeight]=useState(window.innerHeight-44)
+  const [getHeight,setHeight]=useState(window.innerHeight-50)
   const {isDarkMode} = useThemeStore();
   const [selectedTab, setSelectedTab] = useState(searchTabs[0].title);
 

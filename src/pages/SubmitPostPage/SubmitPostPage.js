@@ -5,12 +5,12 @@ import { useLocation } from 'react-router-dom'
 import NewPostForm from '../../components/SubmitPostPageComponents/NewPostForm'
 import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import useMenuButtonTextStore from '../../stores/NavigatorStore/useMenuButtonTextStore'
-
+import { SubmitPostRhs } from '../../components/SubmitPostPageComponents/SubmitPostRhs'
 export default function SubmitPostPage() {
 
   const location=useLocation()
   console.log("current data", location.state);
-  const [getHeight,setHeight]=useState(window.innerHeight-44)
+  const [getHeight,setHeight]=useState(window.innerHeight-50)
 
   const {isDarkMode} = useThemeStore();
   const {setMenuButtonText} = useMenuButtonTextStore();
@@ -40,7 +40,10 @@ export default function SubmitPostPage() {
         </>
 
         {/* RHS */}
-        <>{/* <SubmitPostRhs/> */}</>
+        <>
+          <SubmitPostRhs/>
+        </>
+        
       </AllPagesLayout>
     </div>
   );

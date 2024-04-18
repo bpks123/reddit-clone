@@ -26,7 +26,7 @@ export default function CommunityPage() {
     const [isJoined, setIsJoined] = useState(false);
 
     const {isDarkMode}=useThemeStore()
-    const [getHeight,setHeight]=useState(window.innerHeight-44)
+    const [getHeight,setHeight]=useState(window.innerHeight-50)
 
     useEffect(()=>{
         getCommunityByChannelID()

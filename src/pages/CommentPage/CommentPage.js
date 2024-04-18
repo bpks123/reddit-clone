@@ -25,8 +25,7 @@ export default function CommentPage() {
 
     const [commentText, setCommentText] = useState('');
     const [btnLoading, setBtnLoading] = useState(false);
-    const [getHeight,setHeight]=useState(window.innerHeight-44)
-
+    const [getHeight,setHeight]=useState(window.innerHeight-50)
 
     useEffect(()=>{
         setMenuButtonText('Post');

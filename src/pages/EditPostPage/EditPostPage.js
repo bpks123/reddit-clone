@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import EditPostForm from '../../components/EditPostPageComponents/EditPostForm'
 import useMenuButtonTextStore from '../../stores/NavigatorStore/useMenuButtonTextStore'
-
+import { SubmitPostRhs } from '../../components/SubmitPostPageComponents/SubmitPostRhs'
 export default function EditPostPage() {
 
   const location=useLocation()
@@ -14,8 +14,7 @@ export default function EditPostPage() {
   
     const {isDarkMode} = useThemeStore();
     const {setMenuButtonText} = useMenuButtonTextStore();
-    const [getHeight,setHeight]=useState(window.innerHeight-44)
-
+    const [getHeight,setHeight]=useState(window.innerHeight-50)
 
     useEffect(()=>{
       setMenuButtonText('Edit Post');
@@ -36,8 +35,8 @@ export default function EditPostPage() {
 
             {/* RHS */}
             <>
-            Right
-              {/* <SubmitPostRhs/> */}
+            
+              <SubmitPostRhs/>
             </>
         </AllPagesLayout>
       </div>

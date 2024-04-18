@@ -20,7 +20,7 @@ export default function ProfilePage() {
   const [userDetails, setUserDetails] = useState(false);
 
 
-  const [getHeight,setHeight]=useState(window.innerHeight-44)
+  const [getHeight,setHeight]=useState(window.innerHeight-50)
 
   useEffect(()=>{
     fetchPosts()
