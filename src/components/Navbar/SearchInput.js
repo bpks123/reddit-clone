@@ -3,6 +3,7 @@ import { Button, Flex, Input, InputGroup, InputLeftElement } from '@chakra-ui/re
 import { SearchIcon } from '@chakra-ui/icons';
 import useThemeStore from '../../stores/ThemeStore/useThemeStore';
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function SearchInput() {
@@ -10,8 +11,15 @@ export default function SearchInput() {
   const {isDarkMode} = useThemeStore();
   const { isLoggedIn } = userLogInStore();
   const [searchText, setSearchText] = useState('');
+  const navigateTo = useNavigate();
 
+  function handleSearch() {
+       
+    navigateTo(`/search?q=${encodeURIComponent(searchText)}`);       
+    // navigateTo(`/search?q=${searchText}`); // this line is also working     
+    setSearchText('') 
 
+}
   return (
     <Flex flexGrow={1} maxWidth={isLoggedIn ? 'auto' : '600px'} align='center' mr={2}>
       <InputGroup>
@@ -48,6 +56,7 @@ export default function SearchInput() {
                 height="36px"
                 borderRadius="20px"
                 ml={1}
+                onClick={handleSearch}
                 isDisabled={!searchText.length}
                 bg={'orange'}
             >
