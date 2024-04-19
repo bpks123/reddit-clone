@@ -34,7 +34,7 @@ export default function Navbar() {
              display={{base: isLoggedIn && 'none', md: 'flex'}}
              >
           {/* reddit logo */}
-        <Image src="/images/redditFace.svg" height='30px'  /> 
+        <Image src="/images/redditFace.svg" height='30px' ml={{base: 1, md:0}} mt={{base: 1, md:0}} /> 
         {/* reddit text logo */}
         <Image src={isDarkMode ? "/images/redditWhiteText.svg" : "/images/redditText.svg"}
         height={isDarkMode ? "16px" : "46px"}
