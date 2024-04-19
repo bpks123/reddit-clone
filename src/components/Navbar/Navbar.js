@@ -30,8 +30,8 @@ export default function Navbar() {
              width={{base: "40px", md: "auto"}}
              mr={{base: 0, md: 2}}
              cursor='pointer'
-             display={{ md: 'flex'}}
              onClick={()=>navigateTo('/')}
+             display={{base: isLoggedIn && 'none', md: 'flex'}}
              >
           {/* reddit logo */}
         <Image src="/images/redditFace.svg" height='30px'  /> 
