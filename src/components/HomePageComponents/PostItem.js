@@ -193,8 +193,8 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             <Icon as={IoBookmarkOutline} mr={2} />
             <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Save</Text>
           </Flex>
-
-          {isLoggedIn && post.author._id === loggedInUserDetails._id && (
+          {/* Edit */}
+          {isLoggedIn && post.author._id === loggedInUserDetails.user._id && (
             <Flex
               align="center"
               padding="8px 10px"
@@ -207,9 +207,9 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
               <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Edit</Text>
             </Flex>
           )}
-          {/*Edit and Delete post for own channel is pending to done.. */}
+          {/* Delete */}
           {isLoggedIn && (
-            post.author._id===loggedInUserDetails._id || (post.channel && post.channel.owner === loggedInUserDetails._id)
+            post.author._id===loggedInUserDetails.user._id || (post.channel && post.channel.owner === loggedInUserDetails._id)
           )
           && (
             <Flex

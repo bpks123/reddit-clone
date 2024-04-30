@@ -54,7 +54,7 @@ export default function CommentItems({comment,deleteComment}) {
                    {/* <Text fontSize="9pt" _hover={{ color: "blue.500" }}>
                     Edit
                    </Text> */}
-                  {isLoggedIn && loggedInUserDetails._id === comment.author && <Text
+                  {isLoggedIn && loggedInUserDetails._id === comment.author_id && <Text
                      fontSize="9pt"
                      _hover={{color: "blue.500"}}
                      onClick={()=>deleteComment(comment._id)}

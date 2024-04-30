@@ -185,6 +185,7 @@ const increaseLike=async(postId)=>{
           })
           console.log("Response",response)
           getCommentsOfPost()
+          fetchAllPosts()
    }
    catch(error){
     console.log(error)
