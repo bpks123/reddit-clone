@@ -52,13 +52,14 @@ export default function SearchPages() {
         const allPosts=result.data
         console.log('All posts: ',allPosts)
         const searchPostData=allPosts.filter((item)=>{
-          const author = item.author.name.toLowerCase();
-          const content = item.content.toLowerCase();
+          
+          let author = item.author.name.toLowerCase();
+          
           let title;
           if(item.title){
             title = item.title.toLowerCase();
           }
-          if(author.includes(query) || content.includes(query)){
+          if(author.includes(query) ){
             return item;
           }
         
