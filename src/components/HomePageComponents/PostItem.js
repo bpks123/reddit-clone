@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import { Flex, Icon, Image, Stack, Text, chakra } from '@chakra-ui/react'
 import { IoArrowUpCircleOutline, IoArrowDownCircleOutline, IoArrowUpCircleSharp, IoArrowRedoOutline, IoBookmarkOutline } from 'react-icons/io5'
 import { BsChat } from 'react-icons/bs';
+import { SlLike } from "react-icons/sl";
+import { SlDislike } from "react-icons/sl";
 import { FaReddit, FaRegEdit } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 import useLogInModalStore from '../../stores/ModalStore/LogInModalStore'
 import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function PostItem({ post, increaseLike, decreaseLike, deletePost, editPost, handleComment }) {
 
@@ -27,6 +30,13 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
     navigateTo(`/profile/${userId}`);
   }
 
+  const onHandleClick=()=>{
+    toast.info('This Option will coming soon...',{
+      position: "top-center",
+      autoClose: 3000,
+      theme: isDarkMode?"light":"colored",
+    })
+  }
   return (
     // Posting card Details
     <Flex
@@ -36,37 +46,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
     borderRadius={4}
     _hover={{ borderColor: "gray.500" }}
     >
-      {/* VOTING BUTTON COLUMN Like and dislike*/}
-      <Flex
-        direction="column"
-        align="center"
-        bg={isDarkMode ? "#101113" : "gray.100"}
-        p={2}
-        width="40px"
-        borderRadius={4}
-      >
-        <Icon
-          as={IoArrowUpCircleOutline}
-          color={"gray.400"}
-          fontSize={24}
-          cursor="pointer"
-          _hover={{ color: "brand.100" }}
-            onClick={() => increaseLike(post._id)}
-        />
-        {/* Total like count text */}
-        <Text fontSize="9pt" fontWeight={600} color={isDarkMode && "#d7dadc"}>
-          {post.likeCount}
-        </Text>
-
-        <Icon
-          as={IoArrowDownCircleOutline}
-          color="gray.400"
-          cursor="pointer"
-          _hover={{ color: "brand.100" }}
-          fontSize={24}
-            onClick={() => decreaseLike(post._id)}
-        />
-      </Flex>
+      
 
       {/* POSTS COLUMN */}
       <Flex direction="column" width="100%">
@@ -157,6 +137,38 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
         {/* COMMENT SHARE SAVE BUTTON */}
         <Flex ml={1} mb={0.5} color={isDarkMode ? "#818384" : "gray.500"} >
 
+        {/* Like */}
+        <Flex
+        align="center"
+        padding="8px 10px"
+        borderRadius={4}
+        _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
+        cursor="pointer"
+        >
+            <Icon as={SlLike} mr={2}
+            color="blue"
+            onClick={() => increaseLike(post._id)}
+            
+            />
+            <Text fontSize="9pt" fontWeight={600} color={isDarkMode && "#d7dadc"}>
+          {post.likeCount}
+        </Text>
+        </Flex>
+        {/* Dislike */}
+        <Flex
+        align="center"
+        padding="8px 10px"
+        borderRadius={4}
+        _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
+        cursor="pointer"
+        >
+        <Icon as={SlDislike} mr={2} 
+            color="red"
+            onClick={() => decreaseLike(post._id)}
+        
+        />
+
+        </Flex>
         {/* Comment */}
           <Flex
             align="center"
@@ -177,6 +189,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             borderRadius={4}
             _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
             cursor="pointer"
+            onClick={onHandleClick}
           >
             <Icon as={IoArrowRedoOutline} mr={2} />
             <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Share</Text>
@@ -189,6 +202,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             borderRadius={4}
             _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
             cursor="pointer"
+            onClick={onHandleClick}
           >
             <Icon as={IoBookmarkOutline} mr={2} />
             <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Save</Text>
