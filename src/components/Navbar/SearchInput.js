@@ -58,7 +58,8 @@ export default function SearchInput() {
                 ml={1}
                 onClick={handleSearch}
                 isDisabled={!searchText.length}
-                bg={'orange'}
+                bg={'#ff4500'}
+                color={'white'}
             >
                 Search
             </Button>

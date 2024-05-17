@@ -20,7 +20,7 @@ export default function RedditPrimiumBox() {
         </Stack>
       </Flex>
 
-      <Button width="100%" borderRadius="20px" bg={'orange'} height="30px" mt={2} onClick={()=> navigateTo('/redditpremium')}>Try Now</Button>
+      <Button width="100%" borderRadius="20px" color={'white'} bg={'#ff4500'} height="30px" mt={2} onClick={()=> navigateTo('/redditpremium')}>Try Now</Button>
     </Box>
   )
 }

@@ -38,13 +38,14 @@ export default function RedditHomeBox() {
          </Flex>
 
          <Text fontSize="10pt">Your personal Reddit frontpage. Come here to check in your favourite communities.  </Text>
-         <Button variant="outline" 
+         <Button 
              width="100%" 
              height="30px" 
              mt={6} borderRadius="20px"
              _hover={{bg: isDarkMode ? "#343536" : "gray.100"}} 
              onClick={()=> createPost()}
-             bg={'orange'}
+             bg={'#ff4500'}
+             color={'white'}
              >
               Create Post
         </Button>

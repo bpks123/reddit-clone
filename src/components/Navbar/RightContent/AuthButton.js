@@ -15,7 +15,8 @@ export default function AuthButton() {
      mr={2}
      onClick={()=>setLogInModal(true)}
      borderRadius={'20px'}
-     bg={'orange'}
+     bg={'#ff4500'}
+     color={'white'}
      >Login</Button>
 
      <Button variant='solid' height='28px'
@@ -24,7 +25,8 @@ export default function AuthButton() {
      mr={2}
      borderRadius={'20px'}
      onClick={()=>setSignUpModal(true)}
-     bg={'orange'}
+     bg={'#ff4500'}
+     color={'white'}
      >Sign Up</Button>
 
     </>

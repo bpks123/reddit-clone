@@ -1,0 +1,41 @@
+.left-sidebar{
+    margin-left: 0;
+    width: 20%;
+    height: 560px;
+    overflow: auto;
+    border-right: 1px solid rgb(117, 115, 115);
+    background-color: rgb(18, 37, 41);
+    position: fixed;
+}
+
+.left-sidebar::-webkit-scrollbar{
+    width: 4px;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+.left-sidebar:hover::-webkit-scrollbar {
+    opacity: 0.5;
+    display: block;
+  }
+.left-sidebar::-webkit-scrollbar-thumb {
+    background-color: #6b6b6b;
+    border-radius: 4px;
+  }
+  
+.left-sidebar::-webkit-scrollbar-track {
+    background-color: #2d2d2d;
+    border-radius: 4px;
+  }
+.sidebar-content{
+    overflow: auto;
+    background-color: rgb(18, 37, 41);
+}
+.left-item{
+    border-bottom: 1px solid rgb(117, 115, 115);
+    padding: 20px;
+}
+.hovering:hover{
+    background-color: rgb(223, 48, 48);
+    border-radius: 10px;
+    cursor: pointer;
+}

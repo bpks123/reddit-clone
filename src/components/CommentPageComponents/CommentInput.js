@@ -74,7 +74,7 @@ export default function CommentInput({ commentText, setCommentText, handleCommen
                         height="26px"
                           isDisabled={!commentText.length}
                         isLoading={btnLoading}
-                        bg={'orange'}
+                        bg={'#ff4500'}
                         onClick={() => handleCommentClick()}
                     >
                         Comment

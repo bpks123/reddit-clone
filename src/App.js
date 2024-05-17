@@ -10,6 +10,8 @@ import CommunityPage from './pages/CommunityPage/CommunityPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import RedditPremium from './pages/RedditPremium/RedditPremium';
 import SearchPages from './pages/SearchPages/SearchPages';
+import Sildebar from './components/Sildebar/Sildebar';
+
 function App() {
   return (
     <div>

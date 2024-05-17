@@ -6,7 +6,7 @@ import SearchInput from './SearchInput'
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
 import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import { useNavigate } from 'react-router-dom'
-
+import { Text } from '@chakra-ui/react'
 export default function Navbar() {
 
   const {isLoggedIn} = userLogInStore();
@@ -36,10 +36,14 @@ export default function Navbar() {
           {/* reddit logo */}
         <Image src="/images/redditFace.svg" height='30px' ml={{base: 1, md:0}} mt={{base: 1, md:0}} /> 
         {/* reddit text logo */}
-        <Image src={isDarkMode ? "/images/redditWhiteText.svg" : "/images/redditText.svg"}
+        <Text ml={'1'} 
+        height={"46px"} display={{base: 'none', md: 'unset'}}
+        fontSize={'30px'} color={'#ff4500'} fontWeight={'700'}>reddit</Text>
+
+        {/* <Image src={isDarkMode ? "/images/redditWhiteText.svg" : "/images/redditText.svg"}
         height={isDarkMode ? "16px" : "46px"}
         ml={isDarkMode && 1}
-        display={{base: 'none', md: 'unset'}}/>
+        display={{base: 'none', md: 'unset'}}/> */}
        </Flex>
        
        {/* HOME ICON AND DIRECTORY */}

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Flex, Icon, Image, Stack, Text, chakra } from '@chakra-ui/react'
 import { IoArrowUpCircleOutline, IoArrowDownCircleOutline, IoArrowUpCircleSharp, IoArrowRedoOutline, IoBookmarkOutline } from 'react-icons/io5'
 import { BsChat } from 'react-icons/bs';
+import { ImArrowUp } from "react-icons/im";
+import { ImArrowDown } from "react-icons/im";
 import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { FaReddit, FaRegEdit } from 'react-icons/fa';
@@ -31,7 +33,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
   }
 
   const onHandleClick=()=>{
-    toast.info('This Option will coming soon...',{
+    toast.info('Work in progress.',{
       position: "top-center",
       autoClose: 3000,
       theme: isDarkMode?"light":"colored",
@@ -103,7 +105,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
 
                 {/* Author name */}
               <Text color="gray.500">
-              Posted by <chakra.span cursor="pointer"
+              <chakra.span cursor="pointer"
                _hover={{ textDecoration: "underline", color: "gray.600" }}
                 onClick={() => redirectToProfile(post.author._id)}
               >
@@ -134,10 +136,10 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
           </Flex>
         </Stack>
 
-        {/* COMMENT SHARE SAVE BUTTON */}
+        {/* COMMENT SHARE like BUTTON */}
         <Flex ml={1} mb={0.5} color={isDarkMode ? "#818384" : "gray.500"} >
 
-        {/* Like */}
+        {/* Upvote and Downvote*/}
         <Flex
         align="center"
         padding="8px 10px"
@@ -145,30 +147,21 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
         _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
         cursor="pointer"
         >
-            <Icon as={SlLike} mr={2}
-            color="blue"
+          
+            <Icon as={ImArrowUp} mr={2}
+            outlineColor={'red'}
             onClick={() => increaseLike(post._id)}
             
             />
             <Text fontSize="9pt" fontWeight={600} color={isDarkMode && "#d7dadc"}>
           {post.likeCount}
         </Text>
-        </Flex>
-        {/* Dislike */}
-        <Flex
-        align="center"
-        padding="8px 10px"
-        borderRadius={4}
-        _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
-        cursor="pointer"
-        >
-        <Icon as={SlDislike} mr={2} 
-            color="red"
+        <Icon as={ImArrowDown} ml={2} mt={1}
             onClick={() => decreaseLike(post._id)}
         
         />
-
         </Flex>
+        
         {/* Comment */}
           <Flex
             align="center"
@@ -195,18 +188,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Share</Text>
           </Flex>
 
-            {/* Save */}
-          <Flex
-            align="center"
-            padding="8px 10px"
-            borderRadius={4}
-            _hover={{ bg: isDarkMode ? "#343536" : "gray.200" }}
-            cursor="pointer"
-            onClick={onHandleClick}
-          >
-            <Icon as={IoBookmarkOutline} mr={2} />
-            <Text fontSize="9pt" display={{base: 'none', md: 'block'}}>Save</Text>
-          </Flex>
+           
           {/* Edit */}
           {isLoggedIn && post.author._id === loggedInUserDetails.user._id && (
             <Flex
