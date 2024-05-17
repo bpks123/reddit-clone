@@ -57,7 +57,7 @@ export default function UserMenuModel() {
   }
 
   function handleProfileClick(){
-    navigateTo(`/profile/${loggedInUserDetails._id}`)
+    navigateTo(`/profile/${loggedInUserDetails.user._id}`)
   }
 
   return (

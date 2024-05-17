@@ -29,7 +29,7 @@ function createPost(channelId){
 }
 
 const onHandleClick=()=>{
-  toast.info('This function will enable soon...',{
+  toast.info('Work in progress.',{
     position: "top-center",
     autoClose: 3000,
     theme: isDarkMode?"light":"colored",
@@ -79,7 +79,7 @@ const onHandleClick=()=>{
                 u/{userDetails.name}
               </Text>
 
-              {userDetails._id === loggedInUserDetails._id && (
+              {userDetails._id === loggedInUserDetails.user._id && (
                 <Flex
                   bg="linear-gradient(90deg,#ec0623,#ff8717)"
                   align="center"
