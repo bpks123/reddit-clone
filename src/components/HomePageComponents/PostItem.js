@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Flex, Icon, Image, Stack, Text, chakra } from '@chakra-ui/react'
 import { IoArrowUpCircleOutline, IoArrowDownCircleOutline, IoArrowUpCircleSharp, IoArrowRedoOutline, IoBookmarkOutline } from 'react-icons/io5'
 import { BsChat } from 'react-icons/bs';
-import { ImArrowUp } from "react-icons/im";
-import { ImArrowDown } from "react-icons/im";
-import { SlLike } from "react-icons/sl";
-import { SlDislike } from "react-icons/sl";
+import { TbArrowBigUp } from "react-icons/tb";
+import { TbArrowBigUpFilled } from "react-icons/tb";
+import { TbArrowBigDownFilled } from "react-icons/tb";
+import { TbArrowBigDown } from "react-icons/tb";
 import { FaReddit, FaRegEdit } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
 import userLogInStore from '../../stores/AuthenticationStore/userLogInStore'
@@ -14,7 +14,7 @@ import useThemeStore from '../../stores/ThemeStore/useThemeStore'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import './PostItem.css'
 export default function PostItem({ post, increaseLike, decreaseLike, deletePost, editPost, handleComment }) {
 
   const { isLoggedIn, setIsLoggedIn } = userLogInStore();
@@ -22,6 +22,8 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
   const { isDarkMode } = useThemeStore();
   const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'));
   const navigateTo = useNavigate();
+  const [isUpvote,setIsUpvote]=useState(false);
+  const [isvote,setIsDownvote]=useState(false);
 
 
   function redirectToProfile(userId) {
@@ -148,15 +150,17 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
         cursor="pointer"
         >
           
-            <Icon as={ImArrowUp} mr={2}
-            outlineColor={'red'}
+            <Icon as={TbArrowBigUp} mr={2}
+            fontSize={'20px'} className='arrowUp'
             onClick={() => increaseLike(post._id)}
             
             />
             <Text fontSize="9pt" fontWeight={600} color={isDarkMode && "#d7dadc"}>
           {post.likeCount}
         </Text>
-        <Icon as={ImArrowDown} ml={2} mt={1}
+        <Icon as={TbArrowBigDown} ml={2} mt={0.5}
+            fontSize={'20px'}
+            className='arrowDown'
             onClick={() => decreaseLike(post._id)}
         
         />

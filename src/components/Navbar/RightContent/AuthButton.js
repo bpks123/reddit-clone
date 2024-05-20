@@ -11,8 +11,8 @@ export default function AuthButton() {
     <>
       <Button variant="outline" height={{base:'38px',md:'28px'}}
     //  display={{base: 'none', sm: "flex"}} 
-     width={{base: "65px", md: "110px"}}
-     mr={2}
+     width={{base: "60px", md: "110px"}}
+     mr={{base:'1',md:'2'}}
      onClick={()=>setLogInModal(true)}
      borderRadius={'20px'}
      bg={'#ff4500'}

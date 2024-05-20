@@ -169,6 +169,8 @@ export default function SignUpInput() {
        height='34px'
        mt={2}
        mb={2}
+       bg={'#ff4500'}
+       color={'white'}
        isLoading={buttonLoading}
        >Sign Up</Button>
 
