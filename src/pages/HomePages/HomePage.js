@@ -80,7 +80,7 @@ async function fetchPosts(){
       
     }
     catch(error){
-        alert(error)
+        console.log(error)
     }
 }
   return (

@@ -68,7 +68,7 @@ export default function Sildebar() {
               <Icon as={IoHomeOutline} fontSize={'20px'} color={isDarkMode?'white':''}/>
               <div style={{color:isDarkMode?'white':'' }}>Home</div>
             </div>
-            <div className="sidebar-home">
+            <div className="sidebar-home"onClick={()=>navigateTo('/popular')}>
               <Icon as={BsArrowUpRightCircleFill} fontSize={'20px'} color={isDarkMode?'white':''}/>
               <div style={{color:isDarkMode?'white':'' }}>Popular</div>
             </div>

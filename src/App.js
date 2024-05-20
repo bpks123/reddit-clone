@@ -12,7 +12,7 @@ import RedditPremium from './pages/RedditPremium/RedditPremium';
 import SearchPages from './pages/SearchPages/SearchPages';
 import Sildebar from './components/Sildebar/Sildebar';
 import { useLocation } from 'react-router-dom'
-
+import Popular from './pages/Popular/Popular';
 function App() {
    const location = useLocation();
    let getpath=true
@@ -39,6 +39,8 @@ function App() {
           <Route path='/profile/:userId' element={<ProfilePage/>}/>
           <Route path="/redditpremium" element={<RedditPremium />} />
           <Route path="/search" element={<SearchPages />} />
+          <Route path="/popular" element={<Popular />} />
+
       </Routes>
     </div>
   );
