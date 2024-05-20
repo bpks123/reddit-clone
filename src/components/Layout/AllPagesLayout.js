@@ -1,16 +1,16 @@
 import React from 'react'
 import { Flex } from '@chakra-ui/react'
-
+import './AllpageLayout.css'
 export default function AllPagesLayout({children}) {
   return (
     // border="1px solid black"
-    <Flex justify="center" p="16px 0px">           
+    <Flex className='full-layout'>           
 
-        <Flex
-         width="95%"
+        <Flex className='main-layout'
+        //  width="95%"
          justify="center"
-         maxWidth="860px"
-        //  border="1px solid red"
+        //  maxWidth="860px"
+         
          padding={2}
         >
 

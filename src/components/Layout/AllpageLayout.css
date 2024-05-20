@@ -1,0 +1,19 @@
+.full-layout{
+    justify-content: end;
+    padding: 16px 5px;
+}
+.main-layout{
+    width: 75%;
+    /* border: 1px solid red; */
+}
+
+/* ---------- */
+
+@media (max-width:1300px) {
+    .full-layout{
+        justify-content: center;
+    }
+    .main-layout{
+        width: 95%;;
+    }
+} 

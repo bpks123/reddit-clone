@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Comments from '../../components/CommentPageComponents/Comments';
 import useThemeStore from '../../stores/ThemeStore/useThemeStore';
+import { SubmitPostRhs } from '../../components/SubmitPostPageComponents/SubmitPostRhs';
 export default function CommentPage() {
 
     const { postId } = useParams();
@@ -215,6 +216,8 @@ const increaseLike=async(postId)=>{
         }
         <>
         {/* Right side heading */}
+        <SubmitPostRhs/>
+
         </>
       </AllPagesLayout>
   </div>

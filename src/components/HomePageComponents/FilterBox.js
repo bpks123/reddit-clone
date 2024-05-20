@@ -37,7 +37,7 @@ export default function FilterBox({ selectedFilterTab, setSelectedFilterTab }) {
             border="1px solid"
             borderColor={isDarkMode ? "#343536" : "gray.300"}
         >
-        <Flex width="100%" gap={{base: 2, md: 16}}>
+        <Flex width="100%" gap={{base: 2, md: 12}}>
                 {filterTabs.map((item, index)=>(
                <FilterTabItem 
                key={index} 

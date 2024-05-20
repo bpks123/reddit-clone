@@ -122,7 +122,7 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
             >{post.title} 
             </Text> }
           {post.content && 
-            <Text fontSize="10pt" 
+            <Text fontSize="12pt" 
             color={isDarkMode && "#d7dadc"}
             >{post.content}
             </Text>}
