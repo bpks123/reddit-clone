@@ -21,8 +21,8 @@ useEffect(()=>{
 },[])
 
 useEffect(()=>{
-  setMenuButtonText('Home');
-  sessionStorage.setItem('menuButtonText', 'Home');
+  setMenuButtonText('Popular');
+  sessionStorage.setItem('menuButtonText', 'Popular');
 }, []) 
 
 async function fetchPosts(){

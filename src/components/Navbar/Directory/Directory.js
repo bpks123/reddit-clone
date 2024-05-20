@@ -9,6 +9,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { TiHome } from 'react-icons/ti';
 import { FaReddit } from 'react-icons/fa'
 import { MdError } from 'react-icons/md';
@@ -49,6 +50,7 @@ export default function Directory() {
                 {menuButtonText == 'Create Post' && <Icon as={IoMdAdd} fontSize={24} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
                 {menuButtonText == 'Edit Post' && <Icon as={FaEdit} fontSize={20} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
                 {menuButtonText == 'Post' && <Icon as={FaRegComment} fontSize={20} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
+                {menuButtonText == 'Popular' && <Icon as={BsArrowUpRightCircleFill} fontSize={20} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
                 {menuButtonText == 'Search Result' && <Icon as={IoSearch} fontSize={24} mr={{ base: 1, md: 2 }} color={isDarkMode ? "#D7DADC" : "black"}/>}
                 {menuButtonText == 'Premium' && <Icon as={PiShieldCheckeredFill} fontSize={24} mr={{ base: 1, md: 2 }} color="brand.100"/>}
                 {menuButtonText == 'Profile' && <Image src='/images/ProfileWhiteAvatarIcon.png' width="30px" height="30px" mr={{ base: 1, md: 2 }} borderRadius="20px" objectFit="cover"/>}
