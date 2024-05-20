@@ -15,7 +15,7 @@ export default function Communities() {
   const navigateTo = useNavigate();
   
 const onHandleClick=()=>{
-  toast.info('This page is coming soon...',{
+  toast.info('This page work in progress.',{
     position: "top-center",
     autoClose: 3000,
     theme: isDarkMode?"light":"colored",
@@ -54,7 +54,7 @@ const onHandleClick=()=>{
           bg={isDarkMode && "#1a1a1b"}
           color={isDarkMode && "#d7dadc"}
           _hover={{ bg: isDarkMode ? "#343536" : "gray.100" }}
-          onClick={onHandleClick}
+          onClick={()=>navigateTo('/popular')}
         >
           <Flex align='center'>
             <Icon as={FaArrowUpRightDots}
