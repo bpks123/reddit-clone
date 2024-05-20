@@ -4,6 +4,7 @@ import userLogInStore from "../../stores/AuthenticationStore/userLogInStore";
 import Loading from "../../components/HomePageComponents/loading.gif";
 import useThemeStore from "../../stores/ThemeStore/useThemeStore";
 import CommunityRecommendation from "../../components/HomePageComponents/CommunityRecommendation";
+import HomePagePosts from '../../components/HomePageComponents/HomePagePosts';
 
 export default function Popular() {
 
@@ -16,7 +17,7 @@ export default function Popular() {
     <div style={{backgroundColor:isDarkMode?"rgb(0,0,0)":"rgba(211,211,211,0.8)", minHeight:getHeight}}>
         <AllPagesLayout>
 
-            
+
 
         </AllPagesLayout>
     </div>
