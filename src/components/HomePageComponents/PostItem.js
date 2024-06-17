@@ -22,8 +22,8 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
   const { isDarkMode } = useThemeStore();
   const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails'));
   const navigateTo = useNavigate();
-  const [isUpvote,setIsUpvote]=useState(false);
-  const [isvote,setIsDownvote]=useState(false);
+  const [isUpvote,setIsUpvoted]=useState(false);
+  const [isDownvote,setIsDownvoted]=useState(false);
 
 
   function redirectToProfile(userId) {
@@ -33,6 +33,17 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
     }
     navigateTo(`/profile/${userId}`);
   }
+  const handleUpvote = () => {
+    setIsUpvoted(true);
+    setIsDownvoted(false)
+    increaseLike(post._id);
+  };
+
+  const handleDownvote = () => {
+    setIsDownvoted(true);
+    setIsUpvoted(false)
+    decreaseLike(post._id);
+  };
 
   const onHandleClick=()=>{
     toast.info('Work in progress.',{
@@ -151,8 +162,9 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
         >
           
             <Icon as={TbArrowBigUp} mr={2}
+            color={isUpvote &&'blue'}
             fontSize={'20px'} className='arrowUp'
-            onClick={() => increaseLike(post._id)}
+            onClick={handleUpvote}
             
             />
             <Text fontSize="9pt" fontWeight={600} color={isDarkMode && "#d7dadc"}>
@@ -160,8 +172,9 @@ export default function PostItem({ post, increaseLike, decreaseLike, deletePost,
         </Text>
         <Icon as={TbArrowBigDown} ml={2} mt={0.5}
             fontSize={'20px'}
+            color={isDownvote && 'red'}
             className='arrowDown'
-            onClick={() => decreaseLike(post._id)}
+            onClick={handleDownvote}
         
         />
         </Flex>

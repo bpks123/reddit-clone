@@ -12,7 +12,7 @@ export default function CommentItems({comment,deleteComment}) {
     const loggedInUserDetails = JSON.parse(sessionStorage.getItem('loggedInUserDetails') ) ;
     const navigateTo = useNavigate();
     const {isDarkMode} = useThemeStore();
-
+console.log("Login id:",loggedInUserDetails.user._id)
 
     function timeStamp(timeString){
         const dateObject = new Date(timeString);
@@ -54,7 +54,7 @@ export default function CommentItems({comment,deleteComment}) {
                    {/* <Text fontSize="9pt" _hover={{ color: "blue.500" }}>
                     Edit
                    </Text> */}
-                  {isLoggedIn && loggedInUserDetails._id === comment.author_id && <Text
+                  {isLoggedIn && loggedInUserDetails.user._id === comment.author && <Text
                      fontSize="9pt"
                      _hover={{color: "blue.500"}}
                      onClick={()=>deleteComment(comment._id)}
